@@ -1,0 +1,22 @@
+{
+	"filtreSelectionner":[
+	],
+	"filtreAvanceWithInput":[
+	],
+	"filtresAvanceAvecInput": [
+			{"name": "Péremption", "min": 0, "max": 100, "state": false},
+			{"name": "Rubrique à risque", "min": 0, "max": 100, "state": false}
+	],
+	"filtresBasicListeCategorieDeRubriquage": [
+		{"name": "10", "state": false},
+		{"name": "20", "state": false},
+		{"name": "30", "state": false},
+		{"name": "40", "state": false},
+		{"name": "80", "state": false}
+	],
+	"filtresBasicListeNature": [
+		{"name": "gpb", "state": false},
+		{"name": "pro", "state": false},
+		{"name": "mxt", "state": false}
+	]
+}

@@ -1,0 +1,41 @@
+.formVisualisation {
+    text-align: center;
+    margin-top: 70px;
+    margin-bottom: 20px;
+    margin-left: 30%;
+    width : 40%;
+}
+
+.formDiv {
+    background: #efefef;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.titleVisualisation {
+    text-align: center;
+}
+
+.bodyVisualisation {
+    margin-top: 20px;
+}
+
+.thVisualisation {
+    text-align: center;
+}
+
+.itemVisualisation {
+    cursor: pointer;
+    text-align:center;
+}
+
+.breadcrumb > li + li::before {
+    color: black;
+}
+
+.addVertexButton {
+    color: green;
+    margin-right: 15px;
+    margin-top: -8px;
+    cursor: pointer;
+}

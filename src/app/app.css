@@ -1,0 +1,56 @@
+.navbar-default {
+    background-color: #2b3643;
+}
+
+.logoBB-8 {
+	float: left;
+	padding-left: 20px;
+	padding-top: 10px;
+	width: 50px;
+	height: 40px;
+
+    -webkit-transition: width 2s, height 2s, -webkit-transform 2s;
+    transition: width 2s, height 2s, transform 2s;
+}
+
+.logoOptBB-8 {
+  height: 20px;
+}
+
+.logoBB-8:hover{
+    width: 100px;
+    height: 90px;
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+}
+
+.position-input {
+	width: 200px;
+}
+
+.mouse-none{
+  cursor: none;
+}
+
+.hide{
+  visibility: hidden;
+}
+
+.display{
+  visibility: visible;
+}
+
+.element {
+  margin-top: 50vh; /* poussé de la moitié de hauteur de viewport */
+  transform: translateY(-50%); /* tiré de la moitié de sa propre hauteur */
+}
+
+footer {
+  border-top: solid 1px #CCC;
+  text-align: right;
+  padding-top: 7px;
+}
+
+footer img {
+  vertical-align: sub;
+}

@@ -1,0 +1,19 @@
+{
+	"filtreSelectionner":[
+	],
+	"filtreAvanceWithInput":[
+	],
+	"filtresAvanceAvecInput": [
+			{"name": "N° SIRET", "min": "undefined", "max": "undefined", "state": false},
+			{"name": "N° de voie", "min": "undefined", "max": "undefined", "state": false},
+			{"name": "Département", "min": "undefined", "max": "undefined", "state": false},
+			{"name": "IN_ADR_CO_ARD", "min": "undefined", "max": "undefined", "state": false},
+			{"name": "Code Postal", "min": "undefined", "max": "undefined", "state": false},
+			{"name": "Nb de Requêtes", "min": "undefined", "max": "undefined", "state": false}
+	],
+	"route": [
+		{"name": "Insee", "state": true},
+		{"name": "Etablissement", "state": false},
+		{"varWichIndexEtab": "Insee"}
+	]
+}

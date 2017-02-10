@@ -1,0 +1,78 @@
+<div class="row">
+	<div class="col-md-12">
+		<div class="enTete">
+			<p class="row">
+				<span class="glyphicon glyphicon-comment col-md-1" style="vertical-align:sub; padding-top: 13px;"></span>
+				<span class="col-md-5" *ngIf="rightEvt == true">
+					Evt Utilisateurs
+				</span>
+				<span class="col-md-7" *ngIf="rightEvt == false">
+					Evénements Utilisateurs
+				</span>
+				<span class="col-md-3" *ngIf="rightEvt == true" [popover]="AddEvt" style="padding-top: 10px; padding-right: 10px;" class="glyphicon glyphicon-plus mouse"></span>
+				<popover-content #AddEvt
+					title="Envoie d'un Evenement: {{quiQuoi}}"
+					placement="bottom"
+					style="width:300px; height: 500px;"
+	                class="popover-custom"
+					[animation]="true" 
+					[closeOnClickOutside]="true" >
+				    <div style="max-height:500px;overflow-y:auto;">
+						<span style="font-size: 15px;">Utilisateur : {{login}}</span><br/>
+						<span style="font-size: 15px;">Type :
+							<ng-select
+								[options]="tabEvenement"
+							    placeholder="Séléctionner un type"
+							    (selected)="onSelectedType($event)"
+				    			(deselected)="onDeselectedType($event)">
+				    		</ng-select>
+						</span><br/>
+						<span style="font-size: 15px;">Traitée : </span>
+						<input type="checkbox" value=""/><br/>
+						<span style="font-size: 15px;">Commentaire : </span>
+						<div class="form-group">
+							<textarea class="form-control" rows="5" id="comment"></textarea>
+						</div>
+						<hr/>
+						<button type="button" class="btn btn-success" style="width: 100%;">Valider</button>
+					</div>
+				</popover-content>
+				<button class="col-md-1" *ngIf="rightEvt == true" [popover]="AffecteterDesaffecter" type="button" class="btn btn-success" style="display: inline-block;">Affecter/Désaffecter
+				</button>
+				<popover-content #AffecteterDesaffecter
+					title="Affectation / désaffectation des requêtes"
+					placement="bottom"
+					style="width:300px; height: 500px;"
+	                class="popover-custom"
+					[animation]="true" 
+					[closeOnClickOutside]="true" >
+				    <div style="max-height:500px;overflow-y:auto;">
+						<span style="font-size: 15px;">Affectation à l'utilisateur :
+							<ng-select
+								[options]="tabEvenement"
+							    placeholder="Séléctionner un type"
+							    (selected)="onSelectedType($event)"
+				    			(deselected)="onDeselectedType($event)">
+				    		</ng-select>
+						</span><br/>
+						<hr/>
+						<button type="button" class="btn btn-success" style="width: 45%; display: inline-block;">Affecter</button>
+						<button type="button" class="btn btn-success" style="width: 45%; display: inline-block;">Desaffecter</button>
+					</div>
+				</popover-content>
+			</p>
+		</div>
+		<div *ngIf="evt != ''">
+			<div *ngFor="let item of evt[0]">
+				<div class="blocInfosDetailsRequete">
+					<span style="font-size: 13px;">{{item.user}}</span> - 	
+					<span style="font-size: 13px;">{{item.date | date}}</span><br/>	
+					<span style="font-size: 15px;">Evenement : {{item.type}}</span><hr/>
+				</div>
+			</div>
+		</div>
+		<div class="note note-info" style="margin-top: 20px;" *ngIf="evt == ''">
+			<h4>Il n'y a pas d'événements</h4>			
+		</div>
+	</div>
+</div>

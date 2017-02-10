@@ -1,0 +1,16 @@
+.enTete {
+	background-color: #578EBE;
+	height: 40px;
+	line-height: 40px;
+	font-weight: bold;
+	color: #FFF;
+}
+
+.enTete p {
+	padding-left: 15px;
+	text-transform: uppercase;
+}
+
+.mouse{
+  cursor: pointer;
+}

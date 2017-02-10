@@ -1,0 +1,80 @@
+<div style="padding-top: 20px;" class="col-md-4" *ngFor="let item of responseRequeteEtabRanker.hits.hits">
+  <div class="col-md-9">
+    <span class="affTitle">{{item._source.denom_principale}}</span>
+  </div>
+  <div class="col-md-3">
+    <div class="scoreEtab scoreGreen" *ngIf="item._source.score >= 0">{{item._source.score}} <small>pts.</small></div>
+    <div class="scoreEtab scoreRed" *ngIf="item._source.score < 0">{{item._source.score}} <small>pts.</small></div>
+  </div>
+  <div class="col-md-12" style="margin-top:20px;">
+    <table class="table table-striped">
+      <tr>
+        <td>Adresse</td>
+        <td *ngIf="item._source.presence_voie == 1">{{item._source.adresse.adressekm}}</td>
+        <td *ngIf="item._source.presence_voie == 0">Pas d'adresse</td>
+      </tr>
+      <tr>
+        <td>Etab Id</td>
+        <td>{{item._source.code_etab}}</td>
+      </tr>
+      <tr>
+        <td>Metier</td>
+        <td>{{item._source.metier}}</td>
+      </tr>
+      <tr>
+        <td>Rubriques</td>
+        <td>
+          <ul class="list-group" style="max-height: 100px; overflow-y: auto;" *ngIf="item._source.est_rubrique == 1">
+            <li class="list-group-item" *ngFor="let rub of item._source.libelle_an8">{{rub}}</li>
+          </ul>
+          <span *ngIf="item._source.est_rubrique == 0" style="color: red;"><i>Aucune rubriques</i></span>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<div style="padding-top: 20px;" class="col-md-2">
+
+  <!-- Indicateur Horaires -->
+  <div *ngFor="let item of responseRequeteEtabRanker.hits.hits">
+    <div [popover]="popOverHoraire" *ngIf="item._source.presence_horaire == 1" class="horairesEtab horairesGreen">
+      <span class="glyphicon glyphicon-time"></span> Horaires
+      <popover-content #popOverHoraire
+        placement="bottom"
+        [animation]="true" 
+        [closeOnClickOutside]="true">
+        <span style="color: #000000">Horaires :</span>
+        <hr>
+        <span style="color: #000000">{{item._source.horaires}}</span>
+      </popover-content>
+    </div>
+    <div *ngIf="item._source.presence_horaire == 0" class="horairesEtab horairesRed">
+      <span class="glyphicon glyphicon-time"></span> Pas d'horaires
+    </div>
+  </div>
+
+  <!-- Indicateur Avis -->
+  <div *ngFor="let item of responseRequeteEtabRanker.hits.hits">
+    <div *ngIf="item._source.ratings && item._source.ratings.fragmentavis.nbavistotal >= 1" class="avisEtab avisGreen">
+      <span class="glyphicon glyphicon-user"></span>
+      Nombre d'avis : {{item._source.ratings.fragmentavis.nbavistotal}}
+    </div>
+    <div *ngIf="!item._source.ratings || item._source.ratings.fragmentavis.nbavistotal == 0" class="avisEtab avisRed">
+      <span class="glyphicon glyphicon-user"></span>
+      Pas d'avis
+    </div>
+  </div>
+
+  <!-- Autre nom -->
+  <div *ngFor="let item of responseRequeteEtabRanker.hits.hits">
+    <div *ngIf="item._source">
+      <div>
+        <ul class="list-group">
+          <li href="#" class="list-group-item color">Pas d'autres nom connu
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

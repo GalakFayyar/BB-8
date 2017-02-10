@@ -1,0 +1,20 @@
+<div class="grid" [ngGrid]="{'max_cols': 4, 'auto_resize': true, 'draggable': lock, 'cascade': 'left', 'row_height': 215}">
+	<div>
+		<div>
+			<div style="background: #efefef;" class="grid-item" [ngGridItem]="{'sizex': 1, 'sizey': 2}">
+				<informationsInsee></informationsInsee>
+			</div>
+		</div>
+		<div>
+			<div style="background: #efefef;" class="grid-item" [ngGridItem]="{'sizex': 3, 'sizey': 2}">
+				<miniEtabRanker></miniEtabRanker>
+			</div>
+		</div>
+		<!-- <div>
+			<div style="background: #efefef;" class="grid-item" [ngGridItem]="{'sizex': 2, 'sizey': 2}"></div>
+		</div>
+		<div>
+			<div style="background: #efefef;" class="grid-item" [ngGridItem]="{'sizex': 2, 'sizey': 2}"></div>
+		</div> -->
+	</div>
+</div>

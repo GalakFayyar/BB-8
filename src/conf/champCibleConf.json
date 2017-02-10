@@ -1,0 +1,39 @@
+{
+	"groupeChampCibleDonneesFixes": [
+			{"name": "Partout", "champ": "_all"},
+			{"name": "QuiQuoi contient", "champ": "quiquois.key"},
+			{"name": "QuiQuoi exact", "champ": "quiquois.key.facet"},
+			{"name": "Où contient", "champ": "ou_locs.key"},
+			{"name": "QuiQuoi normalisé contient", "champ": "quiQuoi_normalized"},
+			{"name": "QuiQuoi normalisé exact", "champ": "quiQuoi_normalized.facet"},
+			{"name": "Commentaires", "champ": "evt.comment"}
+	],
+	"groupeChampCibleEtablissement": [
+			{"name": "Partout", "champ": "_all"},
+			{"name": "QuiQuoi exact", "champ": "quiquois.key.facet"}
+	],
+	"groupeChampCibleInsee": [
+			{"name": "Partout", "champ": "_all"}
+	],
+	"groupeChampCibleRubriques": [
+			{"name": "Partout", "champ": "_all"},
+			{"name": "Libéllé contient", "champ": "libelle"},
+			{"name": "Libéllé exact", "champ": "libelle.facet"},
+			{"name": "an8 ou an9", "champ": "code_an9.facet"}
+	],
+	"groupeChampCibleMarques": [
+			{"name": "Partout", "champ": "_all"},
+			{"name": "Forme Normal", "champ": "forme_normale.facet"},
+			{"name": "Forme de Surface contient", "champ": "forme_affichage"},
+			{"name": "Forme de Surface extact", "champ": "forme_affichage.facet"},
+			{"name": "an8 ou an9", "champ": "code_an8.facet"}
+	],
+	"groupeChampCibleMotsClefs": [
+			{"name": "Partout", "champ": "_all"},
+			{"name": "Libéllé contient", "champ": "libelle"},
+			{"name": "Libéllé exact", "champ": "libelle.facet"},
+			{"name": "id père", "champ": "id_pere.facet"},
+			{"name": "an8 ou an9", "champ": "code_an8.facet"},
+			{"name": "Forme Normal", "champ": "id_cri.facet"}
+	]
+}

@@ -1,0 +1,63 @@
+<div style="position:fixed;z-index:1031;top:7px;right:200px;">
+	<span *ngIf="lock == true" style="margin-top: 10px; color:green;" class="glyphicon glyphicon-lock mouse" title="Déplacer les briques" (click)="lockScreen()"></span>
+	<span *ngIf="lock == false" style="margin-top: 10px; color:red;" class="glyphicon glyphicon-lock mouse" title="Déplacer les briques" (click)="lockScreen()"></span>
+	<button *ngIf="varDisplayButtonAffichageComposant == true" data-toggle="modal" data-target="#modalComposants" type="button" style="" class="btn btn-default">Affichage des composants</button>
+</div>
+
+<div class="row" *ngIf="nameDashboard != 'menu'">
+	<div class="col-md-12">
+		<ul class="nav nav-tabs">
+			<li class="mouse" (click)="tgoToMenu()">
+				<a style="border-radius:0 !important">
+					<span style="padding-top: 9px; color: black;" class="glyphicon glyphicon-chevron-left mouse btn-return"></span>
+					<span style="text-transform:uppercase;color:black;font-weight:bold;">Menu</span>
+				</a>
+			</li>
+			<li *ngFor="let fenetreDashboard1 of fenetreDashboard" style="">
+				<a [class.colorBackGround]="varCurrentSearch == fenetreDashboard1.id && addNewWindows == false" *ngIf="fenetreDashboard1.libelle != 'getCurrentSearch' && fenetreDashboard1.libelle != 'lockScreen'" style="border-radius: 0 !important;padding:10px;line-height:1em;">
+					<span [routerLink]="['/mainDashboard/dashboard', fenetreDashboard1.libelle, fenetreDashboard1.id, fenetreDashboard1.nameDashboard, lock, paramRequeteFiltre]" (click)="displayDashboard()" style="color:black;font-weight:bold;" class="mouse" (click)="currentSearch(fenetreDashboard1.id)">
+						<span *ngIf="fenetreDashboard1.dateRequetes != 'Nothing'"
+							 popover="{{fenetreDashboard1.dateRequetes}}"
+						     popoverPlacement="top"
+						     [popoverOnHover]="true"
+						     [popoverCloseOnClickOutside]="true"
+						     [popoverCloseOnMouseOutside]="true"
+						     [popoverDisabled]="false"
+						     [popoverAnimation]="true">
+							 {{fenetreDashboard1.libelle}}
+						</span>
+						<span *ngIf="fenetreDashboard1.dateRequetes == 'Nothing'">{{fenetreDashboard1.libelle}}</span>
+					</span>
+					<span (click)="removeFenetre(fenetreDashboard1.id, fenetreDashboard1.nameDashboard)" style="color:red;vertical-align: sub;" class="glyphicon glyphicon-remove mouse">
+					</span>
+					<br/>
+					<span style="font-size: 13px;">{{fenetreDashboard1.nameDashboard}}</span>
+				</a>
+			</li>
+			<li>
+				<a [class.colorBackGround]="addNewWindows == true" class="mouse" (click)="displayNoneDashboard(); clickAddNewWindows(); goToDashboard()" style="border-radius:0 !important">
+				<span class="tab-btn-rechercher">
+					Rechercher ...
+				</span>
+				<span style="color: green; padding-top: 9px; padding-left: 10px; padding-right: 10px;" class="glyphicon glyphicon-plus mouse"></span>
+				<br/>
+				</a>
+			</li>
+		</ul>
+	</div>
+</div>
+<router-outlet></router-outlet>
+<div *ngIf="displayNoneDashboardVar == false">
+	<dashboardMenu *ngIf="nameDashboard == 'menu'"></dashboardMenu>
+	<div *ngFor="let fenetreDashboard1 of fenetreDashboard">
+		<div *ngIf="fenetreDashboard1.id == varCurrentSearch && fenetreDashboard1.nameDashboard == nameDashboard">
+			<dashboardAladin3 *ngIf="nameDashboard == 'aladin3' || nameDashboard == 'aladin4' || nameDashboard == 'aladin2' || nameDashboard == 'aladin1'"></dashboardAladin3>
+			<dashboardInsee *ngIf="nameDashboard == 'Insee'"></dashboardInsee>
+			<dashboardEtablissement *ngIf="nameDashboard == 'Etablissement'"></dashboardEtablissement>
+			<dashboardRubrique *ngIf="nameDashboard == 'rubrique'"></dashboardRubrique>
+			<dashboardInterpretation *ngIf="nameDashboard == 'intepretation'"></dashboardInterpretation>
+			<dashboardDataVisualisation *ngIf="nameDashboard == 'dataVisualisation'"></dashboardDataVisualisation>
+			<dashboardEtabRanker *ngIf="nameDashboard == 'etabRanker'"></dashboardEtabRanker>
+		</div>
+	</div>
+</div>

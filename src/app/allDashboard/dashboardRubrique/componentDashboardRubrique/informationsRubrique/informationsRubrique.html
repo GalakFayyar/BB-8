@@ -1,0 +1,43 @@
+<div class="row">
+	<div class="col-md-12">
+		<div class="enTete" *ngIf="responseOnInputRubrique">
+			<p *ngFor="let item of responseOnInputRubrique.hits.hits">
+				<span class="glyphicon glyphicon-list-alt"></span>
+				Informations de la rubrique : {{item._source.libelle}}
+			</p>
+		</div>
+		<div>
+			<ul class="nav nav-tabs">
+				<li [class.active]="quatorzeF == true" (click)="activ14F()" style="cursor:pointer;"><a>Référentiel 14F</a></li>
+				<li [class.active]="contrib == true" (click)="activContrib()" style="cursor:pointer;"><a>Contributif</a></li>
+				<li [class.active]="filtres == true" (click)="activFiltres()" style="cursor:pointer;"><a>Filtres</a></li>
+			</ul>
+			<!-- <div style="margin-top: 10px;">
+				<span class="mouse" (click)="activ14F()" [class.select]="quatorzeF == true" style="font-size: 15px;">
+					14F
+				</span>
+				<span class="mouse" (click)="activContrib()" [class.select]="contrib == true" style="padding-left: 50px; font-size: 15px;">Contrib
+				</span>
+				<span class="mouse" (click)="activFiltres()" [class.select]="filtres == true" style="padding-left: 50px; font-size: 15px;">Filtres
+				</span><hr/>
+			</div> -->
+			<div>
+				<div *ngIf="quatorzeF == true && done == true" style="max-height: 200px; overflow-y: auto;">
+					<arrayquatorzeF [responseRubrique]="responseRubrique"></arrayquatorzeF>
+				</div>
+				<div *ngIf="contrib == true && done == true" style="max-height: 200px; overflow-y: auto;">
+					<arrayContributif [responseRubrique]="responseRubrique"></arrayContributif>
+				</div>
+				<div *ngIf="filtres == true && done == true">
+					<arrayFiltres [responseRubrique]="responseRubrique"></arrayFiltres>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-8" *ngIf="done == false && wait == true">
+		<img class="centerLoader" src="{{loaderGif}}" alt="loader"/>
+	</div>
+</div>

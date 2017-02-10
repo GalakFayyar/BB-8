@@ -1,0 +1,9 @@
+<div style="margin-top: 200px;" class="row">
+	<div style="margin-bottom: 10px;" class="col-md-4" *ngFor="let item of mainMenuContent">
+		<div class="box {{item.classColor}}" (click)="clickOnBox(item)">
+			<div class="title">
+				<span style="margin-right:8px;" class="glyphicon {{item.icon}}"></span> {{item.label}}
+			</div>
+		</div>
+	</div>
+</div>

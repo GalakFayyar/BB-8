@@ -1,0 +1,27 @@
+.borderTitle{
+	border-left: 6px solid #feaa01;
+	font-size: 20px;
+}
+
+.borderTitleSecond{
+	padding: 5px 5px 5px 5px;
+	font-size: 15px;
+	border-style: solid;
+	border-color: #feaa01;
+	border-width: 2px;
+	border-radius: 3px;
+}
+
+.borderInterpretaion {
+    border: solid 1px #CCC;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.left25 {
+	padding-left: 25px;
+}
+
+.left40 {
+	padding-left: 40px;
+}

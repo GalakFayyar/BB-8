@@ -1,0 +1,69 @@
+{
+    "point": {
+    	"presence_photo": {
+    		"point_positif" : 10,
+    		"point_negatif" : 0,
+    		"commentaire" : "Des photos sont-elles présente ?"
+    	},
+    	"est_rubrique": {
+    		"point_positif" : 0,
+    		"point_negatif" : -100,
+    		"commentaire" : "Dans PagesJaunes, ne pas avoir de rubrique, c’est limité la capacité à être trouvé aux personnes qui connaissance l’établissement par son nom ou son adresse."
+    	},
+    	"est_geocode": {
+    		"point_positif" : 0,
+    		"point_negatif" : -100,
+    		"commentaire" : "Si l’on n’est pas géocodé, c’est autant de chances en moins d’être trouvé. Il faut savoir que XX % des recherches faites depuis un mobile sont autour de soi. Sans géocodage, pas d’affichage."
+    	},
+    	"presence_horaire": {
+    		"point_positif" : 20,
+    		"point_negatif" : 0,
+    		"commentaire" : "Horaires présentes ?"
+    	},
+    	"presence_email": {
+    		"point_positif" : 10,
+    		"point_negatif" : 0,
+    		"commentaire" : "Adresse e-mail présente ?"
+    	},
+    	"presence_telephone": {
+    		"point_positif" : 0,
+    		"point_negatif" : -100,
+    		"commentaire" : "Numéro de téléphone présent ?"
+    	},
+    	"presence_voie": {
+    		"point_positif" : 0,
+    		"point_negatif" : -50,
+    		"commentaire" : "Voie présente ?"
+    	},
+    	"presence_moyen_de_paiement": {
+    		"point_positif" : 3,
+    		"point_negatif" : 0,
+    		"commentaire" : "Moyen de paiement présent ?"
+    	},
+    	"presence_donnees_enrichies": {
+    		"point_positif" : 10,
+    		"point_negatif" : 0,
+    		"commentaire" : "Données enrichies présents ?"
+    	},
+    	"presence_menu": {
+    		"point_positif" : 2,
+    		"point_negatif" : 0,
+    		"commentaire" : "Menu présent ?"
+    	},
+    	"presence_cri": {
+    		"point_positif" : 10,
+    		"point_negatif" : 0,
+    		"commentaire" : "CRI présent ?"
+    	},
+    	"presence_logo_cviv": {
+    		"point_positif" : 5,
+    		"point_negatif" : 0,
+    		"commentaire" : "Logo présent ?"
+    	},
+    	"presence_site": {
+    		"point_positif" : 10,
+    		"point_negatif" : 0,
+    		"commentaire" : "Site présent ?"
+    	}
+    }
+}

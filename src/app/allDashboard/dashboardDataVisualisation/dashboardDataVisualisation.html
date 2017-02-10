@@ -1,0 +1,502 @@
+<div class="rechercher-info">
+    <input type="text" onClick="this.select();" class="form-control formVisualisation" [(ngModel)]="query" (keyup.enter)="search(query)" placeholder="Champ de recherche" autofocus autocomplete="off">
+</div>
+<div class="grid" [ngGrid]="{'max_cols': 6, 'auto_resize': true, 'resizable': false, 'draggable': false, 'cascade': 'left', 'row_height': 150}">
+    <div>
+<!--
+    <div>
+        <div class="formDiv grid-item" [ngGridItem]="{'sizex': 3, 'sizey': 3}">
+            <dataVisualisationChart></dataVisualisationChart>
+        </div>
+    </div>
+    <div>
+        <div class="formDiv grid-item" [ngGridItem]="{'sizex': 3, 'sizey': 3}">
+            <dataVisualisationGraph></dataVisualisationGraph>
+        </div>
+    </div>
+-->
+    <div>
+        <div class="formDiv grid-item" [ngGridItem]="{'sizex': 2, 'sizey': 3}">
+            <dataVisualisationRegles></dataVisualisationRegles>
+        </div>
+    </div>
+    <div>
+        <div class="formDiv grid-item" [ngGridItem]="{'sizex': 2, 'sizey': 3}">
+            <dataVisualisationRubriques></dataVisualisationRubriques>
+        </div>
+    </div>
+    <div>
+        <div class="formDiv grid-item" [ngGridItem]="{'sizex': 2, 'sizey': 3}">
+            <dataVisualisationCris></dataVisualisationCris>
+        </div>
+    </div>
+    <div>
+        <div class="formDiv grid-item" [ngGridItem]="{'sizex': 2, 'sizey': 3}">
+            <dataVisualisationOntologies></dataVisualisationOntologies>
+        </div>
+    </div>
+    <div class="formDiv grid-item" [ngGridItem]="{'sizex': 2, 'sizey': 3}">
+            <dataVisualisationExpressions></dataVisualisationExpressions>
+        </div>
+    </div>
+    <div>
+        <div class="formDiv grid-item" [ngGridItem]="{'sizex': 2, 'sizey': 3}">
+            <dataVisualisationConcepts></dataVisualisationConcepts>
+        </div>
+    </div>
+    <div>
+        <div class="formDiv grid-item" [ngGridItem]="{'sizex': 2, 'sizey': 3}">
+            <dataVisualisationEtabs></dataVisualisationEtabs>
+        </div>
+    </div>
+<!--
+    <div>
+        <div class="formDiv grid-item" [ngGridItem]="{'sizex': 4, 'sizey': 3}">
+            <dataVisualisationRequetes></dataVisualisationRequetes>
+        </div>
+    </div>
+    <div>
+        <div class="formDiv grid-item" [ngGridItem]="{'sizex': 6, 'sizey': 6}">
+            <dataVisualisationGraphSelected></dataVisualisationGraphSelected>
+        </div>
+    </div>
+-->
+</div>
+
+<!-- Modal Create Rubrique -->
+<div class="modal fade" id="createRubrique" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header" style="padding:35px 50px;">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4>Ajouter une Rubrique</h4>
+            </div>
+            <div class="modal-body" style="padding:40px 50px;">
+                <form role="form">
+                    <div class="form-group">
+                        <label for="an8">Code AN8</label>
+                        <input type="text" class="form-control" id="rubrique_an8" placeholder="Entrer le code AN8" autofocus>
+                    </div>                   
+                    <div class="form-group">
+                        <label for="libelle">Libelle</label>
+                        <input type="text" class="form-control" id="rubrique_libelle" placeholder="Entrer le libellé" autofocus>
+                    </div>
+                    <div class="form-group">
+                        <label for="libelleMetier">Libellé Métier</label>
+                        <input type="text" class="form-control" id="rubrique_libelle_metier" placeholder="Entrer le libéllé métier">
+                    </div>
+                    <button (click)="createRubrique()" data-dismiss="modal" type="submit" class="btn btn-success btn-block"><span class="glyphicon glyphicon-off"></span> Valider</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+            </div>
+        </div>
+      
+    </div>
+</div>
+
+<!-- Modal Create Cri -->
+<div class="modal fade" id="createCri" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header" style="padding:35px 50px;">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4>Ajouter un Cri</h4>
+            </div>
+            <div class="modal-body" style="padding:40px 50px;">
+                <form role="form">
+                    <div class="form-group">
+                        <label for="cri_id">id</label>
+                        <input type="text" class="form-control" id="cri_id" placeholder="Entrer l'id" >
+                    </div>                   
+                    <div class="form-group">
+                        <label for="cri_libelle">Libelle</label>
+                        <input type="text" class="form-control" id="cri_libelle" placeholder="Entrer le libellé">
+                    </div>
+                    <button (click)="createCri()" data-dismiss="modal" type="submit" class="btn btn-success btn-block"><span class="glyphicon glyphicon-off"></span> Valider</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+            </div>
+        </div>
+      
+    </div>
+</div>
+
+<!-- Modal Create Regle -->
+<div class="modal fade" id="createRegle" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header" style="padding:35px 50px;">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4>Ajouter une Règle</h4>
+            </div>
+            <div class="modal-body" style="padding:40px 50px;">
+                <form role="form">
+                    <div class="form-group">
+                        <label for="regle_id">id</label>
+                        <input type="text" class="form-control" id="regle_id" placeholder="Entrer l'id" autofocus>
+                    </div>             
+                    <div class="form-group">
+                        <label for="regle_typologie">Typologie</label>
+                        <input type="text" class="form-control" id="regle_typologie" placeholder="Entrer la typologie">
+                    </div>                   
+                    <div class="form-group">
+                        <label for="regle_titre">Titre</label>
+                        <input type="text" class="form-control" id="regle_titre" placeholder="Entrer le titre">
+                    </div>
+                    <button (click)="createRegle()" data-dismiss="modal" type="submit" class="btn btn-success btn-block"><span class="glyphicon glyphicon-off"></span> Valider</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+            </div>
+        </div>
+      
+    </div>
+</div>
+
+<!-- Modal Create Ontologie -->
+<div class="modal fade" id="createOntologie" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header" style="padding:35px 50px;">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4>Ajouter une Ontologie</h4>
+            </div>
+            <div class="modal-body" style="padding:40px 50px;">
+                <form role="form">
+                    <div class="form-group">
+                        <label for="ontologie_id">id</label>
+                        <input type="text" class="form-control" id="ontologie_id" placeholder="Entrer l'id" autofocus>
+                    </div>                        
+                    <div class="form-group">
+                        <label for="ontologie_libelle">libelle</label>
+                        <input type="text" class="form-control" id="ontologie_libelle" placeholder="Entrer le libelle">
+                    </div>
+                    <button (click)="createOntologie()" data-dismiss="modal" type="submit" class="btn btn-success btn-block"><span class="glyphicon glyphicon-off"></span> Valider</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+            </div>
+        </div>
+      
+    </div>
+</div>
+
+<!-- Modal Create Concept -->
+<div class="modal fade" id="createConcept" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header" style="padding:35px 50px;">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4>Ajouter un Concept</h4>
+            </div>
+            <div class="modal-body" style="padding:40px 50px;">
+                <form role="form">                     
+                    <div class="form-group">
+                        <label for="concept_libelle">libelle</label>
+                        <input type="text" class="form-control" id="concept_libelle" placeholder="Entrer le libelle">
+                    </div>
+                    <button (click)="createConcept()" data-dismiss="modal" type="submit" class="btn btn-success btn-block"><span class="glyphicon glyphicon-off"></span> Valider</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+            </div>
+        </div>
+      
+    </div>
+</div>
+
+<!-- Modal Create Expression -->
+<div class="modal fade" id="createExpression" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header" style="padding:35px 50px;">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4>Ajouter une Expression</h4>
+            </div>
+            <div class="modal-body" style="padding:40px 50px;">
+                <form role="form">                     
+                    <div class="form-group">
+                        <label for="expression_libelle">libelle</label>
+                        <input type="text" class="form-control" id="expression_libelle" placeholder="Entrer le libelle">
+                    </div>
+                    <button (click)="createExpression()" data-dismiss="modal" type="submit" class="btn btn-success btn-block"><span class="glyphicon glyphicon-off"></span> Valider</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+            </div>
+        </div>
+      
+    </div>
+</div>
+
+<!-- Modal Create Etab -->
+<div class="modal fade" id="createEtab" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header" style="padding:35px 50px;">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4>Ajouter un Etab</h4>
+            </div>
+            <div class="modal-body" style="padding:40px 50px;">
+                <form role="form">
+                    <div class="form-group">
+                        <label for="etab_id">id</label>
+                        <input type="text" class="form-control" id="etab_id" placeholder="Entrer l'id" autofocus>
+                    </div>                        
+                    <div class="form-group">
+                        <label for="etab_denom">denom</label>
+                        <input type="text" class="form-control" id="etab_denom" placeholder="Entrer le denom">
+                    </div>
+                    <button (click)="createEtab()" data-dismiss="modal" type="submit" class="btn btn-success btn-block"><span class="glyphicon glyphicon-off"></span> Valider</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+            </div>
+        </div>
+      
+    </div>
+</div>
+
+<!-- Modal Create Link Cri -->
+<div class="modal fade" id="createLinkCri" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header" style="padding:35px 50px;">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4>Rechercher un Cri</h4>
+            </div>
+            <div class="modal-body" style="padding:40px 50px;">
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="cri_find_libelle" placeholder="Entrer le libelle à rechercher" autofocus>
+                    </div>                        
+                    <button (click)="findCri()" type="submit" class="btn btn-success btn-block">Rechercher</button>
+                </form>
+                 <table class="table table-striped">
+                    <thead>
+                        <tr *ngIf="findCris">
+                            <th class="thVisualisation">id</th>
+                            <th class="thVisualisation">libelle</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of findCris">
+                            <td class="itemVisualisation"><span data-dismiss="modal" (click)="createLinkCri(item['@rid'])">{{item.id}}</span></td>
+                            <td class="itemVisualisation"><span data-dismiss="modal" (click)="createLinkCri(item['@rid'])">{{item.libelle}}</span></td>
+                        </tr>
+                    </tbody>
+            </table>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal Create Link Ontologie -->
+<div class="modal fade" id="createLinkOntologie" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header" style="padding:35px 50px;">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4>Rechercher une Ontologie</h4>
+            </div>
+            <div class="modal-body" style="padding:40px 50px;">
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="ontologie_find_libelle" placeholder="Entrer le libelle à rechercher" autofocus>
+                    </div>                        
+                    <button (click)="findOntologie()" type="submit" class="btn btn-success btn-block">Rechercher</button>
+                </form>
+                 <table class="table table-striped">
+                    <thead>
+                        <tr *ngIf="findOntologies">
+                            <th class="thVisualisation">id</th>
+                            <th class="thVisualisation">libellé</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of findOntologies">
+                            <td class="itemVisualisation"><span data-dismiss="modal" (click)="createLinkOntologie(item['@rid'])">{{item.id}}</span></td>
+                            <td class="itemVisualisation"><span data-dismiss="modal" (click)="createLinkOntologie(item['@rid'])">{{item.libelle}}</span></td>
+                        </tr>
+
+                    </tbody>
+            </table>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Create Link Expression -->
+<div class="modal fade" id="createLinkExpression" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header" style="padding:35px 50px;">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4>Rechercher une Expression</h4>
+            </div>
+            <div class="modal-body" style="padding:40px 50px;">
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="expression_find_libelle" placeholder="Entrer le libelle à rechercher" autofocus>
+                    </div>                        
+                    <button (click)="findExpression()" type="submit" class="btn btn-success btn-block">Rechercher</button>
+                </form>
+                 <table class="table table-striped">
+                    <thead>
+                        <tr *ngIf="findExpressions">
+                            <th class="thVisualisation">libelle</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of findExpressions">
+                            <td class="itemVisualisation"><span data-dismiss="modal" (click)="createLinkExpression(item['@rid'])">{{item.libelle}}</span></td>
+                        </tr>
+
+                    </tbody>
+            </table>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Create Link Concept -->
+<div class="modal fade" id="createLinkConcept" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header" style="padding:35px 50px;">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4>Rechercher un Concept</h4>
+            </div>
+            <div class="modal-body" style="padding:40px 50px;">
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="concept_find_libelle" placeholder="Entrer le libelle à rechercher" autofocus>
+                    </div>                        
+                    <button (click)="findConcept()" type="submit" class="btn btn-success btn-block">Rechercher</button>
+                </form>
+                 <table class="table table-striped">
+                    <thead>
+                        <tr *ngIf="findConcepts">
+                            <th class="thVisualisation">libelle</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of findConcepts">
+                            <td class="itemVisualisation"><span data-dismiss="modal" (click)="createLinkConcept(item['@rid'])">{{item.libelle}}</span></td>
+                        </tr>
+
+                    </tbody>
+            </table>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Create Link Rubrique -->
+<div class="modal fade" id="createLinkRubrique" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header" style="padding:35px 50px;">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4>Rechercher une Rubrique</h4>
+            </div>
+            <div class="modal-body" style="padding:40px 50px;">
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="rubrique_find_libelle" placeholder="Entrer le libelle à rechercher" autofocus>
+                    </div>                        
+                    <button (click)="findRubrique()" type="submit" class="btn btn-success btn-block">Rechercher</button>
+                </form>
+                 <table class="table table-striped">
+                    <thead>
+                        <tr *ngIf="findRubriques">
+                            <th class="thVisualisation">libelle</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of findRubriques">
+                            <td class="itemVisualisation"><span data-dismiss="modal" (click)="createLinkRubrique(item['@rid'])">{{item.libelle}}</span></td>
+                        </tr>
+
+                    </tbody>
+            </table>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Create Link Règle -->
+<div class="modal fade" id="createLinkRegle" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header" style="padding:35px 50px;">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4>Rechercher une Règle</h4>
+            </div>
+            <div class="modal-body" style="padding:40px 50px;">
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="regle_find_titre" placeholder="Entrer le titre à rechercher" autofocus>
+                    </div>                        
+                    <button (click)="findRegle()" type="submit" class="btn btn-success btn-block">Rechercher</button>
+                </form>
+                 <table class="table table-striped">
+                    <thead>
+                        <tr *ngIf="findRegles">
+                            <th class="thVisualisation">id</th>
+                            <th class="thVisualisation">typologie</th>
+                            <th class="thVisualisation">titre</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of findRegles">
+                            <td class="itemVisualisation"><span data-dismiss="modal" (click)="createLinkRegle(item['@rid'])">{{item.id}}</span></td>
+                            <td class="itemVisualisation"><span data-dismiss="modal" (click)="createLinkRegle(item['@rid'])">{{item.typologie}}</span></td>                            <td class="itemVisualisation"><span data-dismiss="modal" (click)="createLinkRegle(item['@rid'])">{{item.titre}}</span></td>
+                        </tr>
+                    </tbody>
+            </table>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>

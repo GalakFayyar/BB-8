@@ -1,0 +1,90 @@
+<div class="row" style="margin-top: 20px">
+	<div class="col-md-12">
+		<!-- <div class="rechercher-info">
+			<input type="text" class="form-control" [(ngModel)]="query" (keyup.enter)="search(query)" placeholder="Champ de recherche" autofocus autocomplete="off">
+		</div> -->
+
+ 		<div class="rechercher-info">
+				<input [(ngModel)]="query"
+				[typeahead]="states"
+				[typeaheadItemTemplate]="customItemTemplate"
+				[typeaheadOptionField]="'name'"
+         		(typeaheadOnSelect)="typeaheadOnSelect($event)"
+				(ngModelChange)="autocompl($event)"
+				autocomplete="off"
+				placeholder="Champ de recherche"
+				autofocus
+				class="form-control position-input"
+				id="search">
+		</div>
+
+	</div>
+</div>
+<div *ngIf="anyLibelle == false" class="grid" [ngGrid]="{'max_cols': 20, 'auto_resize': true, 'draggable': lock, 'cascade': 'left', 'row_height': 215}">
+	<div>
+		<div>
+			<div style="background: #efefef; overflow-y:auto !important;overflow-x:hidden !important" class="grid-item" [ngGridItem]="{'sizex': 10, 'sizey': 2, 'minRows': 1}">
+				<div class="enTete">
+					<p>
+						<span class="glyphicon glyphicon-comment"></span> Interprétation
+						<span *ngIf="displayComparaison == false" (click)="clickDisplayComparaison()" style="float: right; padding-right: 10px;" class="mouse">Comparaison
+							<span style="padding-left: 10px;" class="glyphicon glyphicon-equalizer"></span>
+						</span>
+					</p>
+				</div>
+				<comparaisonInterpretation></comparaisonInterpretation>
+			</div>
+		</div>
+		<!-- <div [class.hide]="displayComparaison != true"> -->
+		<div *ngIf="displayComparaison == true">
+			<div style="background: #efefef; overflow-y:auto !important;overflow-x:hidden !important" class="grid-item" [ngGridItem]="{'sizex': 10, 'sizey': 2, 'minRows': 1}">
+				<div class="enTete">
+					<p>
+						<span class="glyphicon glyphicon-comment"></span> Interprétation
+						<span (click)="clickDisplayComparaison()" style="float: right; padding-right: 10px;" class="mouse">Suprimer
+							<span style="padding-left: 10px;" class="glyphicon glyphicon-equalizer"></span>
+						</span>
+					</p>
+				</div>
+				<comparaisonInterpretation></comparaisonInterpretation>
+			</div>
+		</div>
+		<div>
+			<div style="background: #efefef; overflow-y:auto !important;overflow-x:hidden !important" class="grid-item" [ngGridItem]="{'sizex': 10, 'sizey': 4, 'minRows': 1}">
+				<div class="enTete">
+					<p>
+						<span class="glyphicon glyphicon-knight" style="vertical-align:sub"></span> Api Contexte
+						<span (click)="goToBaseConnaissance()">
+							<span style="float: right; padding-top: 10px; padding-right: 10px;" class="glyphicon glyphicon-fullscreen mouse">
+							</span>
+						</span>
+					</p>
+				</div>
+				<apiContexte></apiContexte>
+			</div>
+		</div>
+		<div>
+			<div style="background: #efefef; overflow-y:auto !important;overflow-x:hidden !important" class="grid-item" [ngGridItem]="{'sizex': 10, 'sizey': 1, 'minRows': 1}">
+				<div class="enTete">
+					<p>
+						<span class="glyphicon glyphicon-stats"></span> Base de connaissance
+						<span (click)="goToBaseConnaissance()">
+							<span style="float: right; padding-top: 10px; padding-right: 10px;" class="glyphicon glyphicon-fullscreen mouse">
+							</span>
+						</span>
+					</p>
+				</div>
+			</div>
+		</div>
+		<div>
+			<div style="background: #efefef; overflow-y:auto !important;overflow-x:hidden !important" class="grid-item" [ngGridItem]="{'sizex': 10, 'sizey': 1, 'minRows': 1}">
+				<div class="enTete">
+					<p>
+						<span class="glyphicon glyphicon-th-list"></span> Liste requêtes
+					</p>
+				</div>
+				<listRequete></listRequete>
+			</div>
+		</div>
+	</div>
+</div>

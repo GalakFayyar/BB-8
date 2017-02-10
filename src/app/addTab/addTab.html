@@ -1,0 +1,205 @@
+<div *ngIf="id">
+	<div class="row menu-search">
+		<!-- <div class="col-md-2 label-rechercher-info">Rechercher une information :</div> -->
+		<div class="col-md-3 label-rechercher-info">
+			<span (click)="goBack()" class="glyphicon glyphicon-chevron-left mouse btn-return"></span>
+			{{nameRubriquesElasticSearch}} / {{nameSousRubrique}}
+		</div>
+		<div class="col-md-6">
+			<div class="rechercher-info">
+				<!-- <input type="text" onClick="this.select();" class="form-control position-input" [(ngModel)]="query" (keyup.enter)="search(query)" placeholder="Champ de recherche" autofocus autocomplete="off"> -->
+				<input [(ngModel)]="query"
+				[typeahead]="states"
+				[typeaheadItemTemplate]="customItemTemplate"
+				[typeaheadOptionField]="'name'"
+         		(typeaheadOnSelect)="typeaheadOnSelect($event)"
+				(ngModelChange)="autocompl($event)"
+				autocomplete="off"
+				placeholder="Champ de recherche"
+				autofocus
+				class="form-control position-input"
+				id="search">
+			</div>
+		</div>
+		<div class="col-md-3">
+			<div class="custom-button-param-search dropdown">
+				<button class="dropdown-toggle" type="button" data-toggle="dropdown">{{champCibleSelectionner}}
+					<span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu mouse">
+					<li *ngFor="let item of groupeChampCible">
+						<a (click)="setChampCible(item.name)">{{item.name}}</a>
+					</li>
+				</ul>
+			</div>
+			<!-- <button type="button" class="custom-button-options" data-toggle="modal" data-target="#modalOptions">Options</button> -->
+			<button type="button" class="custom-button-search" (click)="search(query)">rechercher</button>
+		</div>
+	</div>
+</div>
+
+<div *ngIf="id">
+	
+	<!-- <div class="row" style="max-height: 500px; overflow-y: auto;"> -->
+	<div class="row">
+		<div [class.col-md-3]="fenetreRight" [class.col-md-6]="!fenetreRight">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="filters-box">
+						<div *ngIf="fenetreRight" class="title-filter-box"><span class="glyphicon glyphicon-filter"></span> 
+							Filtres actifs
+							<div (click)="redimensionFenetre()" style="cursor:pointer;text-align:right;">
+								<span class="glyphicon glyphicon-chevron-right"></span> modifier
+							</div>
+						</div>
+						<div *ngIf="!fenetreRight" class="title-filter-box"><span class="glyphicon glyphicon-filter"></span>
+							Appliquer filtres
+							<div (click)="redimensionFenetre()" style="cursor:pointer;text-align:right;">
+								<span class="glyphicon glyphicon-chevron-left"></span> réduire
+							</div>
+						</div>
+						<div class="filters-box-content">
+							<div *ngIf="!fenetreRight" class="row form-group">
+								<div class="col-md-12">
+									<button (click)="deleteAllFiltres(); redimensionFenetre()" type="button" class="custom-button-remove-filter">Supprimer</button>
+									<button (click)="affecterFiltres(); redimensionFenetre()" type="button" class="custom-button-affecter-filter">Affecter</button>
+								</div>
+							</div>
+							<filtresSelectionner  *ngIf="fenetreRight"></filtresSelectionner>
+							<filtresASelectionner *ngIf="!fenetreRight"></filtresASelectionner>
+						</div>
+					</div>
+				</div>
+				<!-- <div class="col-md-1">
+					<span *ngIf="fenetreRight" class="glyphicon glyphicon-chevron-right center-chevron mouse" (click)="redimensionFenetre()"></span>
+					<span *ngIf="!fenetreRight" class="glyphicon glyphicon-chevron-left center-chevron mouse" (click)="redimensionFenetre()"></span>
+				</div> -->
+			</div>
+		</div>
+		<div [class.col-md-9]="fenetreRight" [class.col-md-6]="!fenetreRight" *ngIf="varRequeteOnInput && done == true">
+			<!-- <div>
+				<h4 style="text-align: center;">Recherche pour "{{query}}" avec champ cible "{{champCibleSelectionner}}".</h4>
+				<h5 style="text-align: center;">Résultats : {{varRequeteOnInput.hits.total}}</h5>
+			</div><hr> -->
+
+			<div style="background:#E1E5EC;text-transform:uppercase;font-weight:bold;padding:0px 20px;">
+				<span style="color:#4B77BE;font-size:1.7em;">Recherche pour "{{searchedElement}}" avec champ cible "{{champCibleSelectionner}}"</span>
+
+
+				<span style="color:#94A0B2;display:block;">Résultats : {{varRequeteOnInput.hits.total}}</span>
+			</div>
+			<button *ngIf="indexElastic == '/aladin3' || indexElastic == '/aladin4' || indexElastic == '/aladin2' || indexElastic == '/aladin1'" type="button" class="custom-button-csv" (click)="downloadCsv()">
+				Télécharger le résultat
+				<span class="glyphicon glyphicon-download-alt"></span>
+			</button>
+			<button *ngIf="rightEvt == true && indexElastic == '/aladin3' || indexElastic == '/aladin4' || indexElastic == '/aladin2' || indexElastic == '/aladin1'" type="button" class="custom-button-csv" data-toggle="modal" data-target="#AffectDesaffect">
+				Affecter / Désaffecter
+			</button>
+			<div *ngIf="responseEmpty == false">
+				<div *ngIf="nameRubriquesElasticSearch == 'Donnéesfixes'" style="overflow-x:auto;min-height:auto;max-height:445px;overflow-y:auto;">
+					<componentMainArrayAladin3 [varRequeteOnInput]="varRequeteOnInput"></componentMainArrayAladin3>
+				</div>
+				<div *ngIf="nameRubriquesElasticSearch == 'Insee'">
+					<componentMainArrayInsee [varRequeteOnInput]="varRequeteOnInput"></componentMainArrayInsee>
+				</div>
+				<div *ngIf="nameRubriquesElasticSearch == 'Etablissement'">
+					<componentMainArrayEtablissement [varRequeteOnInput]="varRequeteOnInput"></componentMainArrayEtablissement>
+				</div>
+				<div *ngIf="idSousRubrique == 'Rubriques'">
+					<componentMainArrayRubrique [varRequeteOnInput]="varRequeteOnInput"></componentMainArrayRubrique>
+				</div>
+				<div *ngIf="idSousRubrique == 'CRIetMarques'">
+					<componentMainArrayCRIetMarques [varRequeteOnInput]="varRequeteOnInput"></componentMainArrayCRIetMarques>
+				</div>
+				<div *ngIf="idSousRubrique == 'Mots-clefs'">
+					<componentMainArrayMotsClefs [varRequeteOnInput]="varRequeteOnInput"></componentMainArrayMotsClefs>
+				</div>
+				<div class="row" style="margin-top:20px">
+					<h5 class="col-md-3">Page {{indexForRequete / 10}}</h5>
+					<ul class="pager col-md-6">
+						<li class="mouse" (click)="previousInRequete()"><a>Précédent</a></li>
+						<li class="mouse" (click)="nextInRequete()"><a>Suivant</a></li>
+					</ul>
+					<div class="col-md-3">
+						<div class="dropdown" style="float:right;">
+							<button (click)="redimensionFenetreSmall()" class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">	Nb résultats <span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu">
+								<li *ngFor="let item of nbResultat"><a class="mouse" (click)="setNbResult(item.nb)">{{item.nb}}</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div *ngIf="responseEmpty == true" class="col-md-6 alert alert-danger" style="margin-top:15px">
+			Erreur exécution requête elastic search 404 : undefined.
+		</div>
+		<div class="col-md-6" style="margin-top: 100px; margin-left: 100px;" *ngIf="done == false && wait == true">
+			<img style="width: 400; height: 400px;box-shadow: 0 0 10px 10px rgb(239, 239, 239) inset;" src="{{logoBB8}}" alt="loader"/>
+		</div>
+	</div>
+</div>
+
+<!-- Modal -->
+<div id="modalOptions" class="modal fade" role="dialog" *ngIf="responseConfig">
+	<div class="modal-dialog modal-lg">
+
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">Options</h4>
+			</div>
+			<div class="modal-body">
+				<div class="row">
+					<div *ngFor="let item of responseConfig.hits.hits">
+						<div style="margin-bottom: 10px;" class="col-md-3" *ngFor="let item2 of item._source.Accueil">
+							<div class="dropdown" *ngIf="item2.label != 'Ateliers' && item2.label != 'Configuration'">
+								<button style="width: 100%;" class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">{{item2.label}}
+									<span class="caret"></span>
+								</button>
+								<ul class="dropdown-menu mouse">
+									<li *ngFor="let item3 of item2.blocs" (click)="chooseIndexElastic(item3.labelToolBar, item3.href, item2.label)">
+										<a>{{item3.labelToolBar}}</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="AffectDesaffect" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Affectation / désaffectation des requêtes</h4>
+      </div>
+      <div class="modal-body">
+        <span style="font-size: 15px;">Affectation à l'utilisateur :
+			<ng-select
+				[options]="tabAffectDesaffect"
+			    placeholder="Séléctionner un type"
+			    (selected)="onSelectedType($event)"
+				(deselected)="onDeselectedType($event)">
+			</ng-select>
+		</span>
+	  </div>
+      <div class="modal-footer">
+      	<button type="button" class="btn btn-default" data-dismiss="modal" style="width: 49%; display: inline-block;">Affecter</button>
+		<button type="button" class="btn btn-default" data-dismiss="modal" style="width: 49%; display: inline-block;">Desaffecter</button>
+      </div>
+    </div>
+
+  </div>
+</div>

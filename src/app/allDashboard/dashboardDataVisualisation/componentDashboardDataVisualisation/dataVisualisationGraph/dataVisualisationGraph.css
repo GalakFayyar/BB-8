@@ -1,0 +1,17 @@
+svg {
+    background-color: antiquewhite;
+}
+
+.node circle {
+    fill: steelblue;
+}
+.node text {
+    font: bold 12px sans-serif;
+    fill: darkred;
+    text-shadow: 0 1px 0 #fff;
+}
+.link {
+    fill: none;
+    stroke: #000;
+    stroke-opacity: .2;
+}

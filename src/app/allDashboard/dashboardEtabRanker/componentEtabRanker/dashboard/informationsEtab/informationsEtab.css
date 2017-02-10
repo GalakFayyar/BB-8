@@ -1,0 +1,27 @@
+.verticalAlign{
+	display:inline-block;
+	vertical-align:top;
+}
+
+.vertical-scroll {
+	max-height: 214px;
+	overflow-y: auto;
+}
+
+.tableInfosEtab {}
+
+.tableInfosEtab .cellRed {
+	background-color: #e7505a ;
+	color: white;
+	text-transform: uppercase;
+	font-weight: bold;
+	cursor: pointer;
+}
+
+.tableInfosEtab .cellGreen {
+	background-color: #26C281;
+	color: white;
+	text-transform: uppercase;
+	font-weight: bold;
+	cursor: pointer;
+}

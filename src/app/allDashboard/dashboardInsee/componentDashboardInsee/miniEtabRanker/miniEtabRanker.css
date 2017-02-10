@@ -1,0 +1,76 @@
+.logoEtab{
+  width: 50px;
+  height: 45px;
+  margin-top: 20px;
+  float: right;
+}
+
+.service{
+  width: 50px;
+  height: 45px;
+  margin-top: 20px;
+  float: right;
+}
+
+.public{
+  width: 50px;
+  height: 45px;
+  margin-top: 20px;
+  float: right;
+}
+
+.maison{
+  width: 50px;
+  height: 45px;
+  margin-top: 20px;
+  float: right;
+}
+
+.affTitle{
+  font-size: 1.2em;
+  font-weight: bold;
+  background: #EEE;
+}
+
+.scoreEtab, .horairesEtab, .avisEtab {
+  text-align: center;
+  padding: 7px 10px;
+  color: white;
+  text-transform: uppercase;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.avisEtab {
+  margin: 15px 0;
+}
+
+.scoreRed, .horairesRed, .avisRed {
+  background: #e43a45;
+}
+
+.scoreGreen, .horairesGreen, .avisGreen {
+  background: #26C281;
+}
+
+.affText{
+  padding-top: 10px;
+  font-size: 15px;
+}
+
+.affTextSmall{
+  padding-top: 10px;
+  font-size: 13px;
+}
+
+.verticalAlign{
+  display:inline-block;
+  vertical-align:top;
+}
+
+.rectangle{
+  width: 100%;
+  height: 50px;
+  background-color: #f0f3f4;
+  border-radius: 5px;
+}

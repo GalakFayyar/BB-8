@@ -1,0 +1,20 @@
+<table class="table table-striped" style="margin-top: 50px;">
+	<thead>
+		<tr>
+			<th>code_an8</th>
+			<th>Libellé de la rubrique</th>
+			<th>Forme Normale</th>
+			<th>Forme de Surface</th>
+			<th>Type</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr *ngFor="let item of varRequeteOnInput.hits.hits">
+			<td class="mouse" >{{item._source.libelle_rubrique}}</td>
+			<td class="mouse" >{{item._source.code_an9}}</td>
+			<td class="mouse" >{{item._source.forme_normale}}</td>
+			<td class="mouse" >{{item._source.forme_de_surface}}</td>
+			<td class="mouse" >{{item._source.type}}</td>
+		</tr>
+	</tbody>
+</table>

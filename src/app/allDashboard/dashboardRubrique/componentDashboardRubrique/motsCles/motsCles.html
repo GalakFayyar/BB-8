@@ -1,0 +1,19 @@
+<div class="row">
+	<div class="col-md-12">
+		<div class="enTete">
+			<p><span class="glyphicon glyphicon-flag"></span> Mots clés</p>
+		</div>
+		<div *ngIf="done == true">
+			<div *ngIf="pasMotsCles == false">
+				<ul class="list-group">
+					<li class="list-group-item" *ngFor="let item of varRequeteOnInput.hits.hits">
+						{{item._source.libelle}}
+					</li>
+				</ul>
+			</div>
+			<div *ngIf="pasMotsCles == true">
+				<h4 style="text-align: center;">Il n'y a pas de Mots Clés</h4>
+			</div>
+		</div>
+	</div>
+</div>

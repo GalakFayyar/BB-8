@@ -1,0 +1,21 @@
+<div class="row">
+	<div class="col-md-12">
+		<div class="enTete">
+			<p><span class="glyphicon glyphicon-star"></span> Pros les + populaires</p>
+		</div>
+
+		<ul class="list-group list-pros" *ngIf="done == true">
+			<li class="list-group-item" *ngFor="let item of propPlusPopulaire.hits.hits; let i = 'index'">
+				<span class="badge">{{i + 1}}</span>
+				<span class="mouse" (click)="goEtabRanker(item._source.denom_principale, item._source.code_siret)">{{item._source.denom_principale}} - {{item._source.adresse.adrnr}}</span>
+			</li>
+		</ul>
+
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-8" *ngIf="done == false && wait == true">
+		<img class="centerLoader" src="{{loaderGif}}" alt="loader"/>
+	</div>
+</div>

@@ -1,0 +1,27 @@
+.alert-nbElement-position{
+	width: 250px;
+	height: 50px;
+}
+
+td, th
+{
+   text-align: center;
+}
+
+.border{
+	border:1px dotted black;
+	min-height: 80vh;
+}
+
+.center-chevron {
+	margin-top: 35vh; /* poussé de la moitié de hauteur de viewport */
+	transform: translateY(-35%); /* tiré de la moitié de sa propre hauteur */
+}
+
+.col-md-3, .col-md-9, .col-md-6, .col-md-2{
+	transition: width 0.5s;
+}
+
+.pager {
+	margin: 0;
+}

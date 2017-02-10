@@ -1,0 +1,62 @@
+#list li {
+	display: inline !important;
+}
+
+.blocInfosDetailsRequete {
+	width: auto;
+	margin-top: 10px;
+	margin-right: 5px;
+	padding: 7px;
+	background: #5C9BD1 !important;
+	color: white;
+	border: solid 1px #017CA8;
+	display: inline-block;
+}
+
+.blocInfosDetailsRequete .val {
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.blocInfosDetailsRequete .name {
+	color : #E5E5E5 !important;
+	font-size: 1em; 
+	text-decoration: none;
+}
+
+.centerLoader {
+	display: block;
+	margin: 50 auto;
+	width: 300px;
+	height: 250px;
+	box-shadow: 0 0 10px 10px rgb(239, 239, 239) inset;
+}
+
+.btn-configure-component {
+	color: #4B77BE;
+	font-weight: bold;
+	font-size: 0.9em;
+	line-height: 0.9em;
+	padding: 7px; 
+	text-transform: uppercase;
+	margin-left: 50px;
+}
+
+.popover-custom {
+	color: #333 !important;
+}
+
+.popover-custom > div {
+	width: 300px !important;
+}
+
+div.popover.bottom.fade.in {
+	max-width: 300px !important;
+}
+
+.footer-popover {
+	width: 100%;
+	text-align: right;
+	padding-top: 10px;
+	border-top: solid 1px #CCC;
+}

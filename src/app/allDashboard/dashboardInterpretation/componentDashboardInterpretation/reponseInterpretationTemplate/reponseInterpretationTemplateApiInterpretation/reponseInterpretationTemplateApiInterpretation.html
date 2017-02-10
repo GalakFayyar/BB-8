@@ -1,0 +1,19 @@
+<div *ngIf="responseInterpretation != undefined">
+	<div *ngFor="let item of responseInterpretation.blocs_reponses" style="">
+		Reponse 1 : 
+		<span style="color: red;">{{item.type_interpretation}}</span>
+		<div class="borderInterpretaion" *ngFor="let item2 of item.activites_affichage_immediat">
+			<span style="font-size: 115%;"><b>Activités principales :</b></span>
+			<span style="font-size: 115%;"><a style="text-decoration: none;">{{item2.libelle}}</a> ({{item2.scoring_qui_quoi}})</span><br/>
+			<div style="max-height: 100px; overflow-y: auto;">
+				<span *ngFor="let rubrique of item2.rubriques"><span style="color: green;">{{rubrique.libelle_rubrique}} (</span><a (click)="goToRubrique(rubrique.code_an8, rubrique.libelle_rubrique)" class="mouse">{{rubrique.code_an8}}</a><span style="color: green;"> / {{rubrique.code_an9}})</span><br/></span><br/>
+			</div>
+			<div *ngFor="let libelle of item2.expressions">
+				<span class="left25">Contenant : </span><a style="text-decoration:none;">{{libelle.libelle}}</a>
+			</div>
+			<div *ngFor="let synonyme of item2.expressions">
+				<span class="left40" *ngFor="let synonyme2 of synonyme.synonymes">Ou <a style="text-decoration: none;"> {{synonyme2}}</a><br/></span>
+			</div>
+		</div>
+	</div>
+</div>

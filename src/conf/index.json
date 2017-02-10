@@ -1,0 +1,12 @@
+{
+    "index": {
+        "aladin3": "aladin3//_search",
+        "aladin4": "aladin4//_search",
+        "aladin1": "aladin1//_search",
+        "aladin2": "aladin2//_search",
+        "insee": "insee/insee/_search",
+        "rubriques": "/bo_er_metier/rubrique",
+        "criEtMarque": "/critere_source",
+        "motsClefs": "/ref_mc"
+    }
+}

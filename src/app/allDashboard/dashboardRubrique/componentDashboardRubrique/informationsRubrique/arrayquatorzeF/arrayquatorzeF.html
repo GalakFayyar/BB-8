@@ -1,0 +1,44 @@
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>An_8</th>
+			<th>An_9</th>
+			<th>Libelle</th>
+			<th>Segment</th>
+			<th>Verticale</th>
+			<th>Sensible Publicité</th>
+			<th>Impliquante</th>
+			<th>Gratuite</th>
+			<th>Nature</th>
+			<th>Urgence</th>
+			<th>Péremption</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr *ngFor="let item of responseRubrique.hits.hits">
+			<td>{{item._source.code_an8}}</td>
+			<td>{{item._source.code_an9}}</td>
+			<td>{{item._source.libelle}}</td>
+			<td>{{item._source.segment.libelle}}</td>
+			<td>{{item._source.segment.verticale.libelle}}</td>
+			<td style="padding-left: 50px;">
+				<span *ngIf="item._source.sensible_publicite == true" class="glyphicon glyphicon-ok"></span>
+				<span *ngIf="item._source.sensible_publicite == false" class="glyphicon glyphicon-remove"></span>
+			</td>
+			<td style="padding-left: 40px;">
+				<span *ngIf="item._source.impliquante == true" class="glyphicon glyphicon-ok"></span>
+				<span *ngIf="item._source.impliquante == false" class="glyphicon glyphicon-remove"></span>
+			</td>
+			<td style="padding-left: 25px;">
+				<span *ngIf="item._source.gratuite == true" class="glyphicon glyphicon-ok"></span>
+				<span *ngIf="item._source.gratuite == false" class="glyphicon glyphicon-remove"></span>
+			</td>
+			<td>{{item._source.nature}}</td>
+			<td style="padding-left: 25px;">
+				<span *ngIf="item._source.urgence.value == true" class="glyphicon glyphicon-ok"></span>
+				<span *ngIf="item._source.urgence.value == false" class="glyphicon glyphicon-remove"></span>
+			</td>
+			<td style="padding-left: 40px;">{{item._source.peremption}}</td>
+		</tr>
+	</tbody>
+</table>

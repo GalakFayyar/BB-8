@@ -1,0 +1,42 @@
+<div *ngIf="responseInterpretation != undefined">
+	<div *ngFor="let item of responseInterpretation.Delphes.Interpretations.InterpretationsRetenues.Interpretation; let i='index'">
+		<div style="margin-top: 20px;">
+			<span class="borderTitle" style="padding-left: 5px;">Ac {{i + 1}}</span>
+			<span style="margin-left: 10px;" class="borderTitleSecond" *ngIf="item.InformationsPertinence['@declencheur'] == 'true'">Déclencheur <span style="color: green;" class="glyphicon glyphicon-ok"></span></span>
+			<span style="margin-left: 10px;" class="borderTitleSecond" *ngIf="item.InformationsPertinence['@declencheur'] == 'false'">Déclencheur <span style="color: red;" class="glyphicon glyphicon-remove"></span></span>
+
+			<span style="margin-left: 10px;" class="borderTitleSecond" *ngIf="item.InformationsPertinence['@correction'] == 'true'">correction <span style="color: green;" class="glyphicon glyphicon-ok"></span></span>
+			<span style="margin-left: 10px;" class="borderTitleSecond" *ngIf="item.InformationsPertinence['@correction'] == 'false'">correction <span style="color: red;" class="glyphicon glyphicon-remove"></span></span>
+
+			<span *ngFor="let item2 of item.ElementInterpretation">
+				<span style="margin-left: 10px;" class="borderTitleSecond" *ngIf="item2['@permutation'] == 'true'">permutation <span style="color: green;" class="glyphicon glyphicon-ok"></span></span>
+				<span style="margin-left: 10px;" class="borderTitleSecond" *ngIf="item2['@permutation'] == 'false'">permutation <span style="color: red;" class="glyphicon glyphicon-remove"></span></span>
+			</span>
+		</div>
+		<div style="margin-left: 20px;">
+			<div>
+				<h4 style="color: green;">Jetons consommés</h4>
+			</div>
+			<div>
+				<h4 style="color: green;">Interpretations</h4>
+				<span style="margin-left: 20px; font-size: 14px;">
+					[QuoiCertain] {{item.Donnees.reponse['@id']}} - 
+					<span *ngFor="let item2 of item.ElementInterpretation">{{item2['@nom']}}</span>
+				</span>
+			</div>
+			<div>
+				<h4 style="color: green;">Rubriques</h4>
+				<span *ngFor="let item2 of item.Donnees.reponse.ai.activite">
+					<span style="margin-left: 20px; font-size: 14px; font-weight: bold;">
+						{{item2.libelle}} - {{item2['@brId']}}
+					</span><br/>
+					<span *ngFor="let item3 of item2.rubriques.rubrique">
+						<span style="margin-left: 20px;"> <!--le margin ne fonctionne pas bizarre -->
+							> {{item3['@libelleFR']}} < {{item3['@an8']}} / {{item3['@an9']}}>
+						</span><br/>
+					</span>
+				</span>
+			</div>
+		</div>
+	</div>
+</div>

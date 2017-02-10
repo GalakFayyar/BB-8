@@ -1,0 +1,27 @@
+{
+	"typeEvenement": [
+			{"name": "Données"},
+			{"name": "Données-Création Pro"},
+			{"name": "Données-Modification Pro"},
+			{"name": "Interprétation"},
+			{"name": "Interprétation-CRI"},
+			{"name": "Interprétation-Liste Blanche"},
+			{"name": "Interprétation-Pertimm"},
+			{"name": "RAF"},
+			{"name": "RAF-Cessation"},
+			{"name": "RAF-OK"},
+			{"name": "RAF-Pas d'infos"},
+			{"name": "RAF-PDR"}
+	],
+	"AffectationDesaffectation": [
+		{"name": "Amina AROUN", "rubrique": "Search"},
+		{"name": "Céline ROUSSEL", "rubrique": "Search"},
+		{"name": "Eric LAJARIGE", "rubrique": "Search"},
+		{"name": "Elodie MACE", "rubrique": "Search"},
+		{"name": "Antoine BOUDET", "rubrique": "Soutien prestataire"},
+		{"name": "Corinne GOUSSAIN", "rubrique": "Soutien prestataire"},
+		{"name": "Célina BLANCHARD", "rubrique": "Data"},
+		{"name": "Catherine BRASSAMIN", "rubrique": "Data"},
+		{"name": "Cécile CICHOSZ", "rubrique": "Data"}
+	]
+}

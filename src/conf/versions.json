@@ -1,0 +1,87 @@
+[
+    {
+        "version": "1.0.6",
+        "date": "04/01/2017",
+        "auteurs": "paoger",
+        "details": [
+            "Ajout du pannel requètes prédéfinies",
+            "Ajout du pannel pour comparer les rubriques des requêtes/synonymes/lemmes",
+            "Mise à jour de la grid pour le pannel qui compare les rubriques"
+        ]
+    },
+    {
+        "version": "1.0.5",
+        "date": "19/12/2016",
+        "auteurs": "aboudet",
+        "details": [
+            "Afféctation / désafectation => Cote IHM",
+            "Affichage des évenements",
+            "Possibilité de télécharger les requêtes en CSV",
+            "Possibilité de faire un npm run build correct, pour l'intégration du projet",
+            "Correction de bug au niveau des onglets, dashboard aladin3, ..."
+        ]
+    },
+    {
+        "version": "1.0.4",
+        "date": "08/12/2016",
+        "auteurs": "aboudet, tfalcher, paoger",
+        "details": [
+            "GeoRequête",
+            "Modification menu principal",
+            "Filtre Responsive",
+            "Création onglet interpretation + Ajout de l'api contexte",
+            "Base de connaissance : Ajout des liens entre noeuds et ajout widget histogramme"
+        ]
+    },
+    {
+        "version": "1.0.3",
+        "date": "02/12/2016",
+        "auteurs": "paoger",
+        "details": [
+            "Refactoring du code base de connaissance",
+            "Composant base de connaissance: Amélioration des performances (index lucene)"
+        ]
+    },
+    {
+        "version": "1.0.2",
+        "date": "01/12/2016",
+        "auteurs": "aboudet, paoger",
+        "details": [
+            "Modification du Composant base de connaissance.",
+            "Composant base de connaissance: Parcours possible en cliquant sur les éléments.",
+            "Composant Menu: Supression des deux composants 'Données fixe' et 'Données mobiles'",
+            "Composant Menu : Ajout du composant requêtes => redirige sur aladin3",
+            "Filtre aladin : Ajout des filtres permettant de choisir 30 ou 150 jours - jours courant ou précédents, ...",
+            "Filtre aladin3: Les filtres ne se supriment plus tous seul",
+            "Amélioration de la naviguation entre les dashboards et les listes: certaines fois bb-8 n'afficher pas la fenetre."
+        ]
+    },
+    {
+        "version": "1.0.1",
+        "date": "29/11/2016",
+        "auteurs": "aboudet, tfalcher",
+        "details": [
+            "Composant Insee : Intégration de Etab Ranker",
+            "Filtre Actif : supréssion des filtres vides",
+            "Composant Interpretation : avec atelier delphes / api interpretation / WS activités",
+            "Composant Rubrique : Ajout des sous-composant 'mots-clés' et 'Top Requêtes'",
+            "Ajout d'un menu principal",
+            "Optimisations IHM"
+        ]
+    },
+    {
+        "version": "1.0.0",
+        "date": "24/11/2016",
+        "auteurs": "aboudet, tfalcher",
+        "details": [
+            "Migrer les urls en dur du code source vers le fichier conf.json",
+            "Documentation des différentes url qui se trouvent dans le fichier conf.json",
+            "Fixer les versions de dépendances dans le fichier package.json",
+            "Le password n'est plus dans un cookies",
+            "Champ de sauvegarde créer dans le README",
+            "Ajout des dossier css et js pour éviter les liens de bootstrap et jquery dans l'index html",
+            "Création du fichier CHANGELOG.md.",
+            "Création d'un fichier de version"
+        ]
+    }
+]

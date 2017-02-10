@@ -1,0 +1,21 @@
+<div class="row" style="max-height: 700px; overflow-y: auto;">
+	<div class="col-md-12">
+		<!-- <div *ngIf="existFilter == true" class="row">
+			<div class="col-md-12">
+				<div *ngIf="filtresAvanceAvecInput == true" class="note note-info">
+					<h4 class="block">Numériques</h4>
+					<div style="max-height: 600px; overflow-y: auto;">
+						<div *ngFor="let item of confFiltres.filtresAvanceAvecInput">
+							<div class="form-group" *ngIf="item.state == true">
+								<a style="color: #555555; text-decoration: none;">{{item.name}} {{item.min}} - {{item.max}}</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div> -->
+		<div *ngIf="existFilter == false" class="note note-info">
+			<h4>Il n'y a pas de filtres séléctionnés !</h4>
+		</div>
+	</div>
+</div>

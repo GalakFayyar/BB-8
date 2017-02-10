@@ -1,0 +1,22 @@
+<div *ngIf="done == true">
+	<table class="table table-striped" style="margin-top: 30px;">
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>QuiQuoi Normalisé</th>
+				<th>Score de Fragilité</th>
+				<th>Typologie</th>
+				<th>Frequence Mensuelle</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let item of varRequeteOnInput.hits.hits; let i = 'index'">
+				<td>{{i}}</td>
+				<td class="mouse" (click)="saveParams('aladin3')" [routerLink]="['/mainDashboard/dashboard', item._source.quiQuoi_normalized, item._id, indexWithoutSlach, lock, paramRequeteFiltre]">{{item._source.quiQuoi_normalized}}</td>
+				<td class="mouse" (click)="saveParams('aladin3')" [routerLink]="['/mainDashboard/dashboard', item._source.quiQuoi_normalized, item._id, indexWithoutSlach, lock, paramRequeteFiltre]" >{{item._source.tx_fragile * 100 | number : fractionSize}} %</td>
+				<td class="mouse" (click)="saveParams('aladin3')" [routerLink]="['/mainDashboard/dashboard', item._source.quiQuoi_normalized, item._id, indexWithoutSlach, lock, paramRequeteFiltre]">{{item._source.typeQuoiSimple}}</td>
+				<td class="mouse" (click)="saveParams('aladin3')" [routerLink]="['/mainDashboard/dashboard', item._source.quiQuoi_normalized, item._id, indexWithoutSlach, lock, paramRequeteFiltre]">{{item._source.frequence_mensuelle}}</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

@@ -1,0 +1,237 @@
+<div class="row">
+	<div [hidden]="!filtreAvancerActiv">
+		<div class="col-md-6">
+			<div class="note note-info">
+				<h4 class="block">Numériques</h4>
+				<div class="form-group" *ngFor="let filtre of newFilter">
+					<div class="dropdown" style="display:inline-block;">
+						<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="border-radius:0;background:#4B77BE;">
+							{{filtre.currentFilter}} <span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu">
+							<li *ngFor="let item of confFiltresAladin3.filtresAvanceAvecInput">
+								<a (click)="chooseFilterNumeriques(item.name, filtre.name)" class="mouse">{{item.name}}</a>
+							</li>
+						</ul>
+					</div>
+
+					<input *ngIf="filtre.min != 'undefined'" value="{{filtre.min}}" style="width:70px;display:inline-block;" type="number" class="form-control" id="filtre_numerique_min{{filtre.currentFilter}}" placeholder="min">
+
+					<input *ngIf="filtre.min == 'undefined'" style="width:70px;border-radius:0;display:inline-block;" type="number" class="form-control"
+					id="filtre_numerique_min{{filtre.currentFilter}}" placeholder="min">
+
+					<input *ngIf="filtre.max != 'undefined'" value="{{filtre.max}}" style="width:70px;border-radius:0;display:inline-block;" type="number" class="form-control" id="filtre_numerique_max{{filtre.currentFilter}}" placeholder="max">
+
+					<input *ngIf="filtre.max == 'undefined'" style="width:70px;border-radius:0;display:inline-block;" type="number" class="form-control" id="filtre_numerique_max{{filtre.currentFilter}}" placeholder="max">
+
+					<button (click)="desaffecterFilterNumeriques(filtre.currentFilter)" type="button" style="font-weight:bold;border-radius:0;display:inline-block;" class="btn btn-danger">
+						<span style="vertical-align:sub;" class="glyphicon glyphicon-trash"></span>
+					</button>
+				</div>
+
+				<div class="form-group">
+					<button (click)="addFilterNumeriques()" type="button" style="text-transform:uppercase;font-weight:bold;border-radius:0;" class="btn btn-success">
+						<span class="glyphicon glyphicon-plus"></span> ajouter filtre
+					</button>
+				</div>
+			</div>
+
+			<div class="note note-info">
+				<h4 class="block">Taux</h4>
+				<div class="form-group" *ngFor="let filtre of newFilter2">
+					<div class="dropdown" style="display:inline-block;">
+						<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="border-radius:0;background:#4B77BE">
+							{{filtre.currentFilter}} <span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu">
+							<li *ngFor="let item of confFiltresAladin3.filtresAvanceAvecInput2">
+								<a (click)="chooseFilterTaux(item.name, filtre.name)" class="mouse">{{item.name}}</a>
+							</li>
+						</ul>
+					</div>
+
+					<input *ngIf="filtre.min != 'undefined'" value="{{filtre.min}}" style="width:70px;display:inline-block;border-radius:0" type="number" class="form-control" id="filtre_numerique_min{{filtre.currentFilter}}" placeholder="min">
+					
+					<input *ngIf="filtre.min == 'undefined'" style="width:70px;display:inline-block;border-radius:0" type="number" class="form-control" id="filtre_numerique_min{{filtre.currentFilter}}" placeholder="min">
+
+					<input *ngIf="filtre.max != 'undefined'" value="{{filtre.max}}" style="width:70px;display:inline-block;border-radius:0" type="number" class="form-control" id="filtre_numerique_max{{filtre.currentFilter}}" placeholder="max">
+					
+					<input *ngIf="filtre.max == 'undefined'" style="width:70px;display:inline-block;border-radius:0" type="number" class="form-control" id="filtre_numerique_max{{filtre.currentFilter}}" placeholder="max">
+
+					<button (click)="desaffecterFilterTaux(filtre.currentFilter)" type="button" style="text-transform:uppercase;font-weight:bold;border-radius:0;" class="btn btn-danger">
+						<span style="vertical-align:sub;" class="glyphicon glyphicon-trash"></span>
+					</button>
+				</div>
+
+				<div class="form-group">
+					<button (click)="addFilterTaux()" type="button" style="text-transform:uppercase;font-weight:bold;border-radius:0;" class="btn btn-success">
+						<span class="glyphicon glyphicon-plus"></span> ajouter filtre
+					</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-md-6">
+			<div class="note note-info">
+				<h4 class="block">Type dernier événement</h4>
+				<div class="form-group">
+					<ng-select
+						[options]="tabFiltresAvanceTypeDernierEvenement"
+						multiple="true"
+					    placeholder="Séléctionner un événement"
+					    (selected)="onSelectedUtiliteur($event, 'filtresAvanceTypeDernierEvenement')"
+		    			(deselected)="onDeselectedUtilisateur($event, 'filtresAvanceTypeDernierEvenement')"
+		    			[(ngModel)]="ngModelTabFiltresAvanceTypeDernierEvenement">
+					</ng-select>
+				</div>
+			</div>
+
+			<div class="note note-info">
+				<h4 class="block">Dernier utilisateur événement</h4>
+				<div class="form-group">
+					<ng-select
+						[options]="tabFiltresAvanceDernierUtilisateurEvenement"
+						multiple="true"
+						placeholder="Séléctionner un utilisateur"
+						(selected)="onSelectedUtiliteur($event, 'filtresAvanceDernierUtilisateurEvenement')"
+						(deselected)="onDeselectedUtilisateur($event, 'filtresAvanceDernierUtilisateurEvenement')"
+		    			[(ngModel)]="ngModelTabFiltresAvanceDernierUtilisateurEvenement">
+					</ng-select>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div class="note note-info">
+				<h4 class="block">Date dernier événement :</h4>
+				<div class="form-group">
+					<pre (click)="dateMin()" class="card card-block card-header mouse"><em *ngIf="dtMin">{{ getDateMin() | date:'fullDate'}}</em></pre>
+					<div *ngIf="dateMinActiv == true">
+						<datepicker [(ngModel)]="dtMin" [minDate]="minDate" [showWeeks]="true"></datepicker>
+					</div>
+				</div>
+				<div class="form-group">
+					<pre (click)="dateMax()" class="card card-block card-header mouse"><em *ngIf="dtMax">{{ getDateMax() | date:'fullDate'}}</em></pre>
+					<div *ngIf="dateMaxActiv == true">
+						<datepicker [(ngModel)]="dtMax" [minDate]="minDate" [showWeeks]="true"></datepicker>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div [hidden]="!filtreBasicActiv">
+		<form class="form-horizontal">
+			<div class="col-md-6">
+				<div class="note note-info form-group">
+					<h4 class="block">Evénement</h4>
+					<!-- <label for="inputEmail3" class="col-sm-2 control-label">Utilisateur</label> -->
+					<div class="col-sm-12 form-group">
+						<ng-select
+							[options]="tabFiltresBasicDernierUtilisateurEvenement"
+							multiple="true"
+							placeholder="Séléctionner un utilisateur"
+							(selected)="onSelectedUtiliteur($event, 'filtresBasicDernierUtilisateurEvenement')"
+							(deselected)="onDeselectedUtilisateur($event, 'filtresBasicDernierUtilisateurEvenement')"
+							[ngModelOptions]="{standalone: true}"
+	    					[(ngModel)]="ngModelTabFiltresBasicDernierUtilisateurEvenement">
+						</ng-select>
+					</div>
+					<div class="col-sm-12 form-group">
+						<ng-select
+							[options]="tabFiltresBasicTypeDernierEvenement"
+							multiple="true"
+							placeholder="Séléctionner un type"
+							(selected)="onSelectedUtiliteur($event, 'filtresBasicTypeDernierEvenement')"
+							(deselected)="onDeselectedUtilisateur($event, 'filtresBasicTypeDernierEvenement')"
+							[ngModelOptions]="{standalone: true}"
+	    					[(ngModel)]="ngModelTabFiltresBasicTypeDernierEvenement">
+						</ng-select>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="note note-info form-group">
+					<h4 class="block">Affectations</h4>
+					<!-- <label for="inputEmail3" class="col-sm-2 control-label">Utilisateur</label> -->
+					<div class="col-sm-12 form-group">
+						<ng-select
+							[options]="tabFiltresBasicDernierUtilisateurAffectations"
+							multiple="true"
+							placeholder="Séléctionner un utilisateur"
+							(selected)="onSelectedUtiliteur($event, 'filtresBasicDernierUtilisateurAffectations')"
+							(deselected)="onDeselectedUtilisateur($event, 'filtresBasicDernierUtilisateurAffectations')"
+							[ngModelOptions]="{standalone: true}"
+	    					[(ngModel)]="ngModelTabFiltresBasicDernierUtilisateurAffectations">
+						</ng-select>
+					</div>
+					<div class="col-sm-12 form-group">
+						<ng-select
+							[options]="tabFiltresBasicStatuts"
+							multiple="true"
+							placeholder="Séléctionner un status"
+							(selected)="onSelectedUtiliteur($event, 'filtresBasicStatuts')"
+							(deselected)="onDeselectedUtilisateur($event, 'filtresBasicStatuts')"
+							[ngModelOptions]="{standalone: true}"
+	    					[(ngModel)]="ngModelTabFiltresBasicStatuts">
+						</ng-select>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="note note-info form-group">
+					<h4 class="block">Typologies</h4>
+					<div class="col-sm-12 form-group">
+						<ng-select
+							[options]="tabTypologie"
+							multiple="true"
+							placeholder="Séléctionner un type"
+							(selected)="onSelectedUtiliteur($event, 'typologie')"
+							(deselected)="onDeselectedUtilisateur($event, 'typologie')"
+							[ngModelOptions]="{standalone: true}"
+	    					[(ngModel)]="ngModelTabTypologie">
+						</ng-select>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="note note-info form-group">
+					<div class="radio">
+					  <label class="col-md-6">
+					  	<input id="radio3" type="radio" name="nbJours" (click)="radioInput('30Jours', '150Jours')">
+					  	30 Jours
+					  </label>
+					  <label class="col-md-6">
+					  	<input id="radio4" type="radio" name="nbJours" (click)="radioInput('150Jours', '30Jours')">
+					  	150 Jours
+					  </label>
+					</div>
+					<div class="radio">
+					  <label class="col-md-6">
+					  	<input id="radio1" type="radio" name="typeDonnees" (click)="radioInput('Données Fixes', 'Données mobiles')">Données Fixes
+					  </label>
+					  <label class="col-md-6">
+					  	<input id="radio2" type="radio" name="typeDonnees" (click)="radioInput('Données mobiles', 'Données Fixes')">Données mobiles
+					  </label>
+					</div>
+					<div class="radio">
+					  <label class="col-md-6">
+					  	<input id="radio5" type="radio" name="dateJours" (click)="radioInput('Jours courant', 'Jours précedent')">Jours courant
+					  </label>
+					  <label class="col-md-6">
+					  	<input id="radio6" type="radio" name="dateJours" (click)="radioInput('Jours précedent', 'Jours courant')">Jours précedent
+					  </label>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+
+	<div class="col-md-12">
+		<button class="custom-button-switch-filters" *ngIf="filtreAvancerActiv" (click)="filtreAvancer()">
+			<span class="glyphicon glyphicon-zoom-out"></span> Filtres basiques
+		</button>
+
+		<button class="custom-button-switch-filters" *ngIf="filtreBasicActiv" (click)="filtreBasic()">
+			<span class="glyphicon glyphicon-zoom-in"></span> Filtres avancés
+		</button>
+	</div>
+</div>

@@ -1,0 +1,27 @@
+<!-- <span (click)="goToPrev()" style="margin-left: 20px; margin-top: 20px; margin-bottom: 20px; font-size: 150%;" class="glyphicon glyphicon-chevron-left mouse"></span><span (click)="goToPrev()" class="mouse" style="margin-left: 20px; font-size: 120%;">Revenir au dashboard prédédent</span> -->
+<div>
+	<ul class="nav nav-tabs">
+		<li role="navEtabRanker" [class.active]="dashboardActiv == true" style="text-align:center;cursor:pointer;" (click)="dashboard()"><a>Dashboard</a></li>
+		<li role="navEtabRanker" [class.active]="scoreActiv == true" style="text-align:center;cursor:pointer;" (click)="score()"><a>Score</a></li>
+		<li role="navEtabRanker" [class.active]="comparaisonActiv == true" style="text-align:center;cursor:pointer;" (click)="comparaison()"><a>Comparaison</a></li>
+	</ul>
+
+	<div *ngIf="done == true">
+		<div *ngIf="dashboardActiv == true">
+			<div class="row">
+				<nomEtab [responseRequeteEtabRanker]="responseRequeteEtabRanker"></nomEtab>
+				<carouselPhoto [responseRequeteEtabRanker]="responseRequeteEtabRanker"></carouselPhoto>
+				<map [responseRequeteEtabRanker]="responseRequeteEtabRanker"></map>
+			</div>
+			<div class="row">
+				<informationsEtab [responseRequeteEtabRanker]="responseRequeteEtabRanker"></informationsEtab>
+			</div>
+		</div>
+		<div *ngIf="scoreActiv == true">
+			<score [responseRequeteEtabRanker]="responseRequeteEtabRanker"></score>
+		</div>
+		<div *ngIf="comparaisonActiv == true">
+			<comparaison [responseRequeteEtabRanker]="responseRequeteEtabRanker"></comparaison>
+		</div>
+	</div>
+</div>

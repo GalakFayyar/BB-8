@@ -1,0 +1,111 @@
+<div class="row" style="margin-top: 20px">
+	<div>
+		<!-- <div class="col-md-4 rechercher-info">
+			<div class="dropdown">
+			<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">{{size}}<span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu">
+					<li *ngFor="let item of nbResultat"><a class="mouse" (click)="setNbResult(item.nb)">{{item.nb}}</a></li>
+				</ul>
+			</div>
+		</div> -->
+		<div *ngIf="done == true">
+			<div class="container">
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th style="width:10%;">Cri</th>
+							<th style="width:10%;">Score</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr *ngFor="let item of responseApiContexte[0].cri.cri; let i='index'">
+							<td style="font-size: 12px">{{responseApiContexte[0].cri.cri[i]}}</td>
+							<td style="font-size: 12px">{{responseApiContexte[0].cri.score[i]}}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="container">
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th style="width:10%;">Mots</th>
+							<th style="width:10%;">Score</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr *ngFor="let item of responseApiContexte[0].mots.mots; let i='index'">
+							<td style="font-size: 12px">{{responseApiContexte[0].mots.mots[i]}}</td>
+							<td style="font-size: 12px">{{responseApiContexte[0].mots.score[i]}}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="container">
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th style="width:10%;">Rubriques</th>
+							<th style="width:10%;">Score</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr *ngFor="let item of responseApiContexte[0].rubriques.rubriques; let i='index'">
+							<td style="font-size: 12px">{{responseApiContexte[0].rubriques.rubriques[i]}}</td>
+							<td style="font-size: 12px">{{responseApiContexte[0].rubriques.score[i]}}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="container">
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th style="width:10%;">Rubriques_doc</th>
+							<th style="width:10%;">Score</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr *ngFor="let item of responseApiContexte[0].rubriques_docs.rubriques_docs; let i='index'">
+							<td style="font-size: 12px">{{responseApiContexte[0].rubriques_docs.rubriques_docs[i]}}</td>
+							<td style="font-size: 12px">{{responseApiContexte[0].rubriques_docs.score[i]}}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="container">
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th style="width:10%;">Rubriques_fines</th>
+							<th style="width:10%;">Score</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr *ngFor="let item of responseApiContexte[0].rubriques_fines.rubriques_fines; let i='index'">
+							<td style="font-size: 12px">{{responseApiContexte[0].rubriques_fines.rubriques_fines[i]}}</td>
+							<td style="font-size: 12px">{{responseApiContexte[0].rubriques_fines.score[i]}}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="container">
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th style="width:10%;">Rubriques_generiques</th>
+							<th style="width:10%;">Score</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr *ngFor="let item of responseApiContexte[0].rubriques_generiques.rubriques_generiques; let i='index'">
+							<td style="font-size: 12px">{{responseApiContexte[0].rubriques_generiques.rubriques_generiques[i]}}</td>
+							<td style="font-size: 12px">{{responseApiContexte[0].rubriques_generiques.score[i]}}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>

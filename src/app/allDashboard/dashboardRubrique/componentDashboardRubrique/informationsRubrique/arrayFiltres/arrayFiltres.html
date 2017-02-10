@@ -1,0 +1,28 @@
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>Libelle</th>
+			<th>Type</th>
+			<th>Operateur</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr *ngFor="let item of responseRubrique.hits.hits">
+			<td>
+				<span *ngFor="let item2 of item._source.categories_filtres; let i = 'index'">
+					<p style="color: black; text-decoration: none;">{{item2.libelle}}</p>
+				</span>
+			</td>
+			<td>
+				<span *ngFor="let item2 of item._source.categories_filtres; let i = 'index'">
+					<p style="color: black; text-decoration: none;">{{item2.type}}</p>
+				</span>
+			</td>
+			<td>
+				<span *ngFor="let item2 of item._source.categories_filtres; let i = 'index'">
+					<p style="color: black; text-decoration: none;">{{item2.operateur}}</p>
+				</span>
+			</td>
+		</tr>
+	</tbody>
+</table>

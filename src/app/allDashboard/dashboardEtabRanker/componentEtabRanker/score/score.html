@@ -1,0 +1,202 @@
+
+
+<!-- tableau de score -->
+<div class="row" *ngIf="tabScore && done">
+  <div *ngIf="responseElasticSearch">
+    <div class="widgets col-md-6" *ngIf="responseElasticSearch.hits.total == 1 && !bool">
+      <div *ngFor="let item of responseElasticSearch.hits.hits">
+        <div>
+          <!-- tableau de score -->
+            <div class="horizontal-scroll">
+            <h2 *ngIf="scoreModifie == false && nbCurrentScore < 0" style="color: red; text-align: center;">Le score actuel est de : {{nbCurrentScore}} points.</h2>
+            <h2 style="color: green; text-align: center;" *ngIf="scoreModifie == false && nbCurrentScore >= 0">Le score actuel est de : {{nbCurrentScore}} points.</h2>
+            <div *ngIf="scoreModifie == true">
+              <div class="row">
+                <div class="col-md-5">
+                  <h5 *ngIf="nbCurrentScore < 0" style="color: red;">Score actuel : {{nbCurrentScore}} points.</h5>
+                  <h5 style="color: green;" *ngIf="nbCurrentScore >= 0">Score actuel : {{nbCurrentScore}} points.</h5>
+                </div>
+                <div class="col-md-7">
+                  <h3 *ngIf="nbScoreModifie < 0" style="color: red;">Le score modifié est de : {{nbScoreModifie}} points.</h3>
+                  <h3 style="color: green;" *ngIf="nbScoreModifie >= 0">Le score modifié est de : {{nbScoreModifie}} points.</h3>
+                </div>
+              </div>
+            </div>
+            <div style="max-height: 650px; overflow-y: auto; overflow-x: hidden;">
+              <table class="table table-hover">
+                <thead>
+                  <tr class="black-muted-bg">
+                    <th>Critères</th>
+                    <th></th>
+                    <th>Points</th>
+                    <th></th>
+                    <th>Simuler le score</th>
+                    <th>Modif. le nb.</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of tabScore; let i = 'index'" class="no-top-border">
+                    <td ngClass="nowrap" class="mouse" [popover]="popOverCritere">
+                      <img class="iconPicto" src="{{imgPicto}}" alt="picto"/>{{item.critere}}
+                      <popover-content #popOverCritere
+                        placement="bottom"
+                        [animation]="true" 
+                        [closeOnClickOutside]="true" >
+                        <span style="color: #000000">Critere :</span><hr>
+                        <span style="color: #000000">{{item.Commentaire}}</span>
+                      </popover-content>
+                    </td>
+                    <td>
+                      <span *ngIf="item.check == 1" style="color:#26C281;" class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                      <span *ngIf="item.check == 0" style="color:#e7505a;" class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                    </td>
+                    <td>{{item.Point}}</td>
+                    <td>
+                      <i *ngIf="item.check == 1 && item.check == 1 && item.Point != 0" style="color:#26C281;" class="glyphicon glyphicon-arrow-up"></i>
+                      <i *ngIf="item.check == 1 && item.check == 0 && item.Point != 0" style="color:#e7505a;" class="glyphicon glyphicon-arrow-down"></i>
+                      <i *ngIf="item.check == 0 && item.customScore == 1 && item.Point != 0" style="color:#26C281;" class="glyphicon glyphicon-arrow-up"></i>
+                      <i *ngIf="item.check == 0 && item.customScore == 0 && item.Point != 0" style="color:#e7505a;" class="glyphicon glyphicon-arrow-down"></i>
+                      <i *ngIf="item.Point == 0" class="glyphicon glyphicon-minus" aria-hidden="true"></i>
+                    </td>
+                    <td>
+                      <span *ngIf="item.check == 0">
+                        <button *ngIf="item.customScore == 0" type="button" class="btn btn-warning btn-sm" (click)="modifScore(i, item.critere1)"></button>
+                        <button *ngIf="item.customScore == 1" type="button" class="btn btn-success btn-sm" (click)="modifScore(i, item.critere1)"></button>
+                      </span>
+                      <span *ngIf="item.check == 1 && !item.nb">
+                        <button type="button" class="btn btn-default btn-sm disabled"></button>
+                      </span>
+                      <span *ngIf="item.check == 1 && item.nb">
+                        <button *ngIf="item.customScore == 0" type="button" class="btn btn-warning btn-sm" (click)="modifScore(i, item.critere1)"></button>
+                        <button *ngIf="item.customScore == 1" type="button" class="btn btn-success btn-sm" (click)="modifScore(i, item.critere1)"></button>
+                      </span>
+                    </td>
+                    <td>
+                      <div *ngIf="item.modulablePoint">
+                        <span style="color:#26C281;cursor:pointer" (click)="addObj(item.critere1)" class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                        <span style="color:#e7505a;cursor:pointer" (click)="rmObj(item.critere1)" class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+                      </div>
+                      <div *ngIf="!item.modulablePoint">
+                        <span style="color:#e7505a;" class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              </div>
+            </div>
+
+          <!--  -->
+      </div>
+      </div>
+    </div>
+  <!--  -->
+  <!-- graphique du score -->
+    <div *ngIf="tabScoreAVG">
+    <div class="col-md-6" *ngIf="responseElasticSearch.hits.total == 1 && !bool">
+      <div *ngFor="let item of responseElasticSearch.hits.hits">
+        <div>
+          <base-chart style="height: 300px;"
+           [datasets]="radarChartData"
+           [labels]="radarChartLabels"
+           [chartType]="radarChartType"
+           (chartHover)="chartHovered($event)"
+           (chartClick)="chartClicked($event)">
+          </base-chart>
+        </div>
+      </div>
+      <div *ngIf="affPodium == true || affGraph == true">
+        <!-- choose -->
+        <div style="text-align: center;">
+        <ul class="nav nav-tabs">
+          <li role="navEtabRanker" [class.active]="affPodium == true" style="text-align:center;cursor:pointer;" (click)="displayGraphic()"><a>Podium</a></li>
+
+          <li role="navEtabRanker" [class.active]="affPodium == false" style="text-align:center;cursor:pointer;" (click)="displayGraphic()"><a>Graphique</a></li>
+        </ul>
+<!--         <span class="mouse" *ngIf="affPodium == true" style="color: green">Podium</span>
+        <span class="mouse" *ngIf="affPodium != true" (click)="Graphique()">Podium</span>
+        <span class="mouse" *ngIf="affGraph == true" style="padding-left: 50px; color: green;">Graphique</span>
+        <span class="mouse" *ngIf="affGraph != true" style="padding-left: 50px;" (click)="displayGraphic()">Graphique</span><hr/> -->
+        </div>
+        <!--  -->
+        <div *ngIf="affPodium == true">
+          <div *ngFor="let item of responseElasticSearch.hits.hits" class="tableaux" style="padding-top: 10px;">
+            <h4 style="text-align: center">National</h4>
+            <div class="lignNational" style="margin-bottom: 30px;"></div> <!-- Permet de d'encadrer avec le titre 'Valeur max'-->
+            <div style="background: #00ABFF; text-align: center;" class="podium2 tableaux"*ngIf="responseElasticSearchAVG.aggregations.scoreAvg.value < item._source.score">
+              <p style="margin-top: -20px; color: black">Etab. Actuel</p>
+              <p style="margin-top: 30px; color: black">{{positionEtab}}e</p>
+              <p style="color: black">{{item._source.score}} pts.</p>
+            </div>
+            <div style="background: #00ABFF; text-align: center;" class="podium2 tableaux" *ngIf="responseElasticSearchAVG.aggregations.scoreAvg.value > item._source.score">
+              <p style="margin-top: -20px; color: black">Valeur Moy.</p>
+              <p style="margin-top: 40px; color: black">{{responseElasticSearchAVG.aggregations.scoreAvg.value | number:'2.1-2'}} pts.</p>
+            </div>
+            <div class="podium1 tableaux" style="background: #00487C; text-align: center;">
+              <p style="margin-top: -20px; color: black">Valeur Max</p>
+              <p style="margin-top: 80px; color: white">{{valeurMaxScore}} Pts.</p>
+              </div>
+            <div style="background: #6CCFF6; text-align: center;" class="podium3 tableaux" *ngIf="responseElasticSearchAVG.aggregations.scoreAvg.value > item._source.score">            
+              <p style="margin-top: -20px; color: black">Etab. Actuel</p>
+              <p style="color: black">{{positionEtab}}e</p>
+              <p style="color: black">{{item._source.score}} pts.</p>
+            </div>
+            <div style="background: #6CCFF6; text-align: center;" class="podium3 tableaux" *ngIf="responseElasticSearchAVG.aggregations.scoreAvg.value < item._source.score">
+              <p style="margin-top: -20px; color: black">Valeur Moy.</p>
+              <p style="color: black">{{responseElasticSearchAVG.aggregations.scoreAvg.value | number:'2.1-2'}} pts.</p>
+            </div>
+          </div>
+          <!-- 20KM -->
+          <div *ngFor="let item of responseElasticSearch.hits.hits" style="margin-left: 100px;" class="tableaux">
+            <h4 style="text-align: center">20 Km</h4>
+            <div class="lign20KM" style="margin-bottom: 30px;"></div> <!-- Permet de d'encadrer avec le titre 'Valeur max'-->
+            <div style="background:#00ABFF; text-align: center;" class="podium2 tableaux"*ngIf="responseElasticSearchAVG20KM.aggregations.scoreAvg.value < item._source.score">
+              <p style="margin-top: -20px; color: black">Etab. Actuel</p>
+              <p style="margin-top: 30px; color: black">{{positionEtab20KM}}e</p>
+              <p style="color: black">{{item._source.score}} pts.</p>
+            </div>
+            <div style="background:#00ABFF; text-align: center;" class="podium2 tableaux" *ngIf="responseElasticSearchAVG20KM.aggregations.scoreAvg.value > item._source.score">
+              <p style="margin-top: -20px; color: black">Valeur Moy.</p>
+              <p style="margin-top: 40px; color: black">{{responseElasticSearchAVG20KM.aggregations.scoreAvg.value | number:'2.1-2'}} pts.</p>
+            </div>
+            <div class="podium1 tableaux" style="background:#00487C; text-align: center;">
+              <p style="margin-top: -20px; color: black">Valeur Max</p>
+              <p style="margin-top: 80px; color: white">{{valeurMaxScore20KM}} Pts.</p>
+              </div>
+            <div style="background:#6CCFF6; text-align: center;" class="podium3 tableaux" *ngIf="responseElasticSearchAVG20KM.aggregations.scoreAvg.value > item._source.score">            
+              <p style="margin-top: -20px; color: black">Etab. Actuel</p>
+              <p style="color: black">{{positionEtab20KM}}e</p>
+              <p style="color: black">{{item._source.score}} pts.</p>
+            </div>
+            <div style="background:#6CCFF6; text-align: center;" class="podium3 tableaux" *ngIf="responseElasticSearchAVG20KM.aggregations.scoreAvg.value < item._source.score">
+              <p style="margin-top: -20px; color: black">Valeur Moy.</p>
+              <p style="color: black">{{responseElasticSearchAVG20KM.aggregations.scoreAvg.value | number:'2.1-2'}} pts.</p>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="affGraph == true && !bool" style="padding-top: 10px;">
+          <base-chart
+                  [datasets]="lineChartData"
+                  [labels]="lineChartLabels"
+                  [options]="lineChartOptions"
+                  [colors]="lineChartColors"
+                  [legend]="lineChartLegend"
+                  [chartType]="lineChartType"
+                  (chartHover)="chartHovered($event)"
+                  (chartClick)="chartClicked($event)">
+          </base-chart>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+<!--  -->
+</div>
+
+<div class="row">
+  <div class="col-md-4">
+  </div>
+  <div style="margin-top: 100px;" *ngIf="!done && wait">
+    <img src="{{loaderGif}}" alt="loader"/>
+  </div>
+</div>

@@ -1,0 +1,16 @@
+.centerLoader {
+	padding-top: 50px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 300px;
+	height: 250px;
+}
+
+.select{
+	color: green;
+}
+
+hr {
+	border-top: 1px solid #ccc;
+}

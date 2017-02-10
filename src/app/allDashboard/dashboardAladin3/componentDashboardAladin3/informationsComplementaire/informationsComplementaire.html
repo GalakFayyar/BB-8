@@ -1,0 +1,101 @@
+<div class="row" *ngIf="done == true">
+	<div class="col-md-12" *ngIf="responseRequete">
+		<div class="enTete">
+			<p>
+				<span class="glyphicon glyphicon-list-alt"></span> Informations complémentaires
+				<button class="btn-configure-component" [popover]="popOverColonnes">
+					<span class="glyphicon glyphicon-cog mouse"></span> configurer
+				</button>
+				<popover-content #popOverColonnes 
+	                placement="bottom"
+	                style="width:300px"
+	                class="popover-custom"
+	                [animation]="true" 
+	                [closeOnClickOutside]="true" >
+				    <div style="max-height:220px;overflow-y:auto;">
+				    	<div style="line-height:25px" *ngFor="let item of tabDisplayStat1">
+				    		<button type="button" *ngIf="item.state == false" class="btn btn-warning btn-sm" (click)="modifState(item.name)"></button>
+				    		<button type="button" *ngIf="item.state == true" class="btn btn-success btn-sm" (click)="modifState(item.name)"></button>
+				    		<span style="cursor:pointer" (click)="modifState(item.name)">{{item.name}}</span>
+				    	</div>
+					</div>
+					<div class="footer-popover" style="width:100%;text-align:right;">
+						<button type="button" class="btn btn-success btn-xs" (click)="modifStateAllActiv()">Tout afficher</button>
+						<button type="button" class="btn btn-warning btn-xs" (click)="modifStateAllNone()">Tout masquer</button>
+					</div>
+				</popover-content>
+				<span (click)="downloadCsv()" style="padding-top: 10px; padding-left: 10px;" class="glyphicon glyphicon-download-alt mouse"></span>
+			</p>
+		</div>
+	</div>
+	<div class="col-md-6" *ngIf="responseRequete">
+		<div *ngFor="let item of responseRequete.hits.hits">
+			<ul id="list">
+				<li *ngFor="let col of colonnes">
+					<div *ngIf="col.state == true" class="blocInfosDetailsRequete">
+						<span class="val">{{col.val}}</span><br/><a class="name">{{col.name}}</a>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="col-md-2">
+		<div>
+			<div *ngFor="let item of responseRequete.hits.hits">
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th style="text-align: center;">Liste des Qui Quoi</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr *ngFor="let item2 of item._source.quiquois">
+							<td style="text-align:center;">{{item2.key}}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-2">
+		<div *ngFor="let item of responseRequete.hits.hits">
+			<div>
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th style="text-align: center;">Liste des où normalisés</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr *ngFor="let item2 of item._source.ou_norm">
+							<td style="text-align:center;" class="mouse" (click)="goToOuContient(item2.key)">{{item2.key}}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-2">
+		<div *ngFor="let item of responseRequete.hits.hits">
+			<div>
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th style="text-align: center;">Liste des reformulations</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr *ngFor="let item2 of item._source.reformulations">
+							<td style="text-align:center;" class="mouse" (click)="goToAddTabForReformulation(item2.key)">{{item2.key}}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-12" *ngIf="done == false && wait == true">
+		<img class="centerLoader" src="{{loaderGif}}" alt="loader"/>
+	</div>
+</div>

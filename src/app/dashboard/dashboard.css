@@ -1,0 +1,76 @@
+.enTete {
+	background-color: rgba(254,170,1, 0.5);
+	height: 40px;
+}
+
+.mouse {
+  cursor: pointer;
+}
+
+#list .span {
+	text-decoration: none;
+}
+
+#list ul {
+	list-style-type: none;
+}
+
+.borderInterpretaion {
+	border: solid 1px #CCC;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.border {
+	margin: 0 auto;
+	width: 50%;
+    border-style: solid;
+    border-width: 1px;
+}
+
+.left25 {
+	padding-left: 25px;
+}
+
+.left40 {
+	padding-left: 40px;
+}
+
+.positionArrowBack {
+	color: #feaa01;
+	font-size: 150%;
+	padding-left: 10px;
+}
+
+.colorBackGround {
+	background-color: rgba(254,170,1, 0.7);
+}
+
+#list li {
+    display: inline !important;
+}
+
+.blocInfosDetailsRequete {
+	width: auto;
+	margin-top: 10px;
+	margin-right: 5px;
+    padding: 7px;
+    background: #039ECA !important;
+    color: white;
+    border: solid 1px #017CA8;
+    display: inline-block;
+}
+
+.blocInfosDetailsRequete .val {
+	font-size: 38px;
+}
+
+.blocInfosDetailsRequete .name {
+	color : white !important;
+}
+
+.tab-btn-rechercher {
+	color: #2F353B;
+    text-transform: uppercase;
+    font-weight: bold;
+}

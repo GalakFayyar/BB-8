@@ -1,0 +1,52 @@
+<div *ngIf="done == true && !res">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th class="thVisualisation col-md-6">Requètes</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of requests">
+                <td class="thVisualisation">
+                    <span (click)="getElem(item)">{{item.name}}</span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="row" *ngIf="done == true && res">
+    <div class="col-md-12">
+        <button (click)="previous()" type="button"><span class="glyphicon glyphicon-chevron-left mouse btn-return">Précédent</span></button>
+        <div class="enTete">
+            <h3 class="titleVisualisation">{{current_request_name}}</h3>
+        </div>
+        <div class="bodyVisualisation">
+            <table class="table table-striped">
+                <thead>
+                    <tr class="thVisualisation" >
+                        <span *ngIf="type == 'cri'">
+                            <th class="col-md-6">id</th>
+                        </span>
+                        <th class="thVisualisation col-md-6">libelle</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of res">
+                        <td class="thVisualisation" *ngIf="type == 'cri'">
+                            <span (click)="search(item)">{{item.id}}</span>
+                        </td>
+                        <td class="thVisualisation">
+                            <span (click)="search(item)">{{item.libelle}}</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="row" *ngIf="done == false">
+    <div>
+        <img class="centerLoader" src="{{loaderGif}}" alt="loader"/>
+    </div>
+</div>
+

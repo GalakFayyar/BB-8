@@ -1,0 +1,21 @@
+<table class="table table-striped" style="margin-top: 50px;">
+	<thead>
+		<tr>
+			<th>code_an8</th>
+			<th>code_an9</th>
+			<th>Libellé rubrique</th>
+			<!-- <th>Verticale</th> -->
+		</tr>
+	</thead>
+	<tbody>
+		<tr *ngFor="let item of varRequeteOnInput.hits.hits">
+			<td class="mouse" (click)="saveParams('rubrique')" [routerLink]="['/mainDashboard/dashboard', item._source.libelle, item._id, 'rubrique', false, paramRequeteFiltre]">{{item._source.code_an8}}
+			</td>
+			<td class="mouse" (click)="saveParams('rubrique')" [routerLink]="['/mainDashboard/dashboard', item._source.libelle, item._id, 'rubrique', false, paramRequeteFiltre]">{{item._source.code_an9}}
+			</td>
+			<td class="mouse" (click)="saveParams('rubrique')" [routerLink]="['/mainDashboard/dashboard', item._source.libelle, item._id, 'rubrique', false, paramRequeteFiltre]">{{item._source.libelle}}
+			</td>
+			<!-- <td class="mouse" >{{item._source.segment.verticale.libelle}}</td> -->
+		</tr>
+	</tbody>
+</table>

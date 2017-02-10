@@ -1,0 +1,30 @@
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>An_8</th>
+			<th>An_9</th>
+			<th>Libelle</th>
+			<th>Segment</th>
+			<th>Verticale</th>
+			<th>Eligible contributif</th>
+			<th>Eligible photo</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr *ngFor="let item of responseRubrique.hits.hits">
+			<td>{{item._source.code_an8}}</td>
+			<td>{{item._source.code_an9}}</td>
+			<td>{{item._source.libelle}}</td>
+			<td>{{item._source.segment.libelle}}</td>
+			<td>{{item._source.segment.verticale.libelle}}</td>
+			<td style="padding-left: 50px;">
+				<span *ngIf="item._source.contributif.value == true" class="glyphicon glyphicon-ok"></span>
+				<span *ngIf="item._source.contributif.value == false" class="glyphicon glyphicon-remove"></span>
+			</td>
+			<td style="padding-left: 50px;">
+				<span *ngIf="item._source.photo.value == true" class="glyphicon glyphicon-ok"></span>
+				<span *ngIf="item._source.photo.value == false" class="glyphicon glyphicon-remove"></span>
+			</td>
+		</tr>
+	</tbody>
+</table>

@@ -1,0 +1,37 @@
+{
+    "interpretation": [
+        {"name": "Api Interprétation", "nameNorma": "apiInterpretation"},
+        {"name": "Réponses Delphes", "nameNorma": "reponsesDelphes"}
+    ],
+    "apiInterpretation": [
+        {"name": "Préproduction-données du jour", "addr": "/outils/r2d2/php/get_api_interpretation.php?affichage=affichage2&serverId=18&terme="},
+        {"name": "Préproduction-données de la veille", "addr": "/outils/r2d2/php/get_api_interpretation.php?affichage=affichage2&serverId=25&terme="},
+        {"name": "Préproduction-données de production", "addr": "/outils/r2d2/php/get_api_interpretation.php?affichage=affichage2&serverId=32&terme="},
+        {"name": "Production/Delphes-Goup (delphes5m01g)", "addr": "/outils/r2d2/php/get_api_interpretation.php?affichage=affichage2&serverId=8&terme="},
+        {"name": "demo/delphes5t", "addr": "/outils/r2d2/php/get_api_interpretation.php?affichage=affichage2&serverId=37&terme="},
+        {"name": "Validation-données de la veille", "addr": "/outils/r2d2/php/get_api_interpretation.php?affichage=affichage2&serverId=39&terme="},
+        {"name": "Validation-données du jour", "addr": "/outils/r2d2/php/get_api_interpretation.php?affichage=affichage2&serverId=38&terme="},
+        {"name": "d10t-7.0.6", "addr": "/outils/r2d2/php/get_api_interpretation.php?affichage=affichage2&serverId=34&terme="},
+        {"name": "d6t-7.0.6", "addr": "/outils/r2d2/php/get_api_interpretation.php?affichage=affichage2&serverId=36&terme="},
+        {"name": "d8t-7.0.8", "addr": "/outils/r2d2/php/get_api_interpretation.php?affichage=affichage2&serverId=35&terme="},
+        {"name": "Delphes SEO", "addr": "/outils/r2d2/php/get_api_interpretation.php?affichage=affichage2&serverId=10&terme="}
+    ],
+    "reponsesDelphes": [
+        {"name": "Préproduction-données de la veille", "addr": "/outils/r2d2/php/get_delphes.php?serverId=25&serveur=delphesnr01g.pyes.local:10062&type=json&valeur="},
+        {"name": "Préproduction-données de la veille (vintage)", "addr": "/outils/r2d2/php/get_delphes.php?serverId=31&serveur=delphesnr01g.pyes.local:10062&type=json&valeur="},
+        {"name": "Préproduction-données de production", "addr": "/outils/r2d2/php/get_delphes.php?serverId=32&serveur=delphesnr01g.pyes.local:10060&type=json&valeur="},
+        {"name": "Préproduction-données de production (vintage)", "addr": "/outils/r2d2/php/get_delphes.php?serverId=17&serveur=delphesnr01g.pyes.local:10060&type=json&valeur="},
+        {"name": "Préproduction-données du jour", "addr": "/outils/r2d2/php/get_delphes.php?serverId=18&serveur=delphesnr01g.pyes.local:10064&type=json&valeur="},
+        {"name": "Préproduction-données du jour (vintage)", "addr": "/outils/r2d2/php/get_delphes.php?serverId=30&serveur=delphesnr01g.pyes.local:10064&type=json&valeur="},
+        {"name": "Production/Delphes-Goup (delphes5m01g)", "addr": "/outils/r2d2/php/get_delphes.php?serverId=8&serveur=delphes5m01g.pyes.local:10060&type=json&valeur="},
+        {"name": "adncvalid/delphesnr02g-données J", "addr": "/outils/r2d2/php/get_delphes.php?serverId=2&serveur=delphesnr02g.pyes.local:10064&type=json&valeur="},
+        {"name": "adncvalid/delphesnr02g-données J-1", "addr": "/outils/r2d2/php/get_delphes.php?serverId=19&serveur=delphesnr02g.pyes.local:10062&type=json&valeur="},
+        {"name": "demo/delphes5t", "addr": "/outils/r2d2/php/get_delphes.php?serverId=37&serveur=delphes5t.bbo1t.local:10060&type=json&valeur="},
+        {"name": "Validation-données de la veille", "addr": "/outils/r2d2/php/get_delphes.php?serverId=39&serveur=delphesnr02g.pyes.local:10062&type=json&valeur="},
+        {"name": "Validation-données du jour", "addr": "/outils/r2d2/php/get_delphes.php?serverId=38&serveur=delphesnr02g.pyes.local:10064&type=json&valeur="},
+        {"name": "d10t-7.0.6", "addr": "/outils/r2d2/php/get_delphes.php?serverId=13&serveur=delphes10t.bbo1t.local:10060&type=json&valeur="},
+        {"name": "d3t-7.0.6", "addr": "/outils/r2d2/php/get_delphes.php?serverId=12&serveur=delphes3t.bbo1t.local:10060&type=json&valeur="},
+        {"name": "d6t-test-7.0.6", "addr": "/outils/r2d2/php/get_delphes.php?serverId=11&serveur=delphes6t.bbo1t.local:10060&type=json&valeur="},
+        {"name": "d8t-7.0.6", "addr": "/outils/r2d2/php/get_delphes.php?serverId=16&serveur=delphes8t.bbo1t.local:10060&type=json&valeur="}
+    ]
+}

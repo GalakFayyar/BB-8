@@ -1,0 +1,56 @@
+<div class="row">
+	<div class="col-md-12">
+		<!-- <div class="enTete">
+			<p>
+				<span class="glyphicon glyphicon-comment" style="vertical-align:sub"></span> Interprétation
+				<span style="float: right; padding-right: 10px;" class="mouse">Comparaison
+					<span style="padding-left: 10px;" class="glyphicon glyphicon-equalizer"></span>
+				</span>
+			</p>
+		</div> -->
+		<div>
+			<div style="margin-top: 10px;">
+				<div class="dropdown" style="float:left; width: 50%">
+					<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="border-radius:0; background:#4B77BE; width: 100%">
+						{{indexRight}}<span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu" style="width: 100%">
+						<li *ngFor="let item of confAtelierInterpretation[nameIndexRight]">
+							<a (click)="chooseIndexRight(item.name, item.addr)" class="mouse">{{item.name}}</a>
+						</li>
+					</ul>
+				</div>
+				<div class="dropdown" style="float:left; width: 50%">
+					<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="border-radius:0; background:#4B77BE; width: 100%">
+						{{indexLeft}}<span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu" style="width: 100%">
+						<li *ngFor="let item of confAtelierInterpretation.interpretation"><a (click)="chooseIndexLeft(item.name, item.nameNorma)" class="mouse">{{item.name}}</a></li>
+					</ul>
+				</div>
+			</div>
+			<div *ngIf="done == true && nameIndexRight == 'reponsesDelphes'" style="margin-left: 10px;">
+				<reponseInterpretationTemplateDelphes [responseInterpretation]="responseInterpretation"></reponseInterpretationTemplateDelphes>
+				<div *ngIf="responseInterpretation == undefined">
+					<div class="alert alert-danger">
+					  <strong>Erreur: Unable to connect to {{currentAdresse}}{{query}}</strong>
+					</div>
+				</div>
+			</div>
+			<div *ngIf="done == true && nameIndexRight == 'apiInterpretation'" style="margin-left: 10px;">
+				<reponseInterpretationTemplateApiInterpretation [responseInterpretation]="responseInterpretation"></reponseInterpretationTemplateApiInterpretation>
+				<div *ngIf="responseInterpretation == undefined">
+					<div class="alert alert-danger">
+					  <strong>Erreur: Unable to connect to {{currentAdresse}}{{query}}</strong>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-8" *ngIf="done == false && wait == true">
+		<img class="centerLoader" src="{{loaderGif}}" alt="loader"/>
+	</div>
+</div>

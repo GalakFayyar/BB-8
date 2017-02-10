@@ -1,0 +1,23 @@
+.fleche {
+	width: 50px;
+	height: 25px;
+}
+
+.note {
+	margin: 0 0 20px;
+	padding: 15px 30px 15px 15px;
+	border-left: 5px solid #eee;
+	border-radius: 0 4px 4px 0;
+}
+
+.note-info {
+	background-color: #f5f8fd;
+	border-color: #8bb4e7;
+	color: #010407;
+}
+
+.note-danger {
+	background-color: #fef7f8;
+	border-color: #f0868e;
+	color: #210406;
+}

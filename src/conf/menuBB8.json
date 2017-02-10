@@ -1,0 +1,60 @@
+{
+    "mainMenu": [
+        {
+            "id": "requete",
+            "label": "Requêtes",
+            "classColor": "box-light-blue",
+            "icon": "glyphicon-search",
+            "href": "/aladin3",
+            "afficher": "true"
+        },
+        {
+            "id": "etablissement",
+            "label": "Etablissements",
+            "classColor": "box-green",
+            "icon": "glyphicon-home",
+            "href": "/Insee",
+            "afficher": "true"
+        },
+        {
+            "id": "interpretation",
+            "label": "Interpretation",
+            "classColor": "box-red",
+            "icon": "glyphicon-eye-open",
+            "href": "interpretation",
+            "afficher": "true"
+        },
+        {
+            "id": "rubrique",
+            "label": "Rubriques",
+            "classColor": "box-light-red",
+            "icon": "glyphicon-th-list",
+            "href": "/Rubrique",
+            "afficher": "true"
+        },
+        {
+            "id": "base_connaissance",
+            "label": "Base de connaissance",
+            "classColor": "box-orange",
+            "icon": "glyphicon-stats",
+            "href": "Recherche",
+            "afficher": "true"
+        },
+        {
+            "id": "cri",
+            "label": "CRI / Marques",
+            "classColor": "box-blue",
+            "icon": "glyphicon-tags",
+            "href": "/CriMarque",
+            "afficher": "true"
+        },
+        {
+            "id": "mots_cles",
+            "label": "Mots Clés",
+            "classColor": "box-purple",
+            "icon": "glyphicon-wrench",
+            "href": "/MotClef",
+            "afficher": "true"
+        }
+    ]
+}

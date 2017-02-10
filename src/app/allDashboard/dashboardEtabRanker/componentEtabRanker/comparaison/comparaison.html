@@ -1,0 +1,65 @@
+<div class="widgets" *ngIf="responseAllEtab && done">
+  <div class="row" *ngFor="let item of responseElasticSearch.hits.hits">
+      <!-- <ng2-smart-table [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)"></ng2-smart-table> -->
+    <div>
+		<table class="table table-striped" style="margin-top: 30px;">
+			<thead>
+				<tr>
+					<th>{{settings.columns.id.title}}</th>
+					<th>{{settings.columns.nom.title}}</th>
+					<th>{{settings.columns.score.title}}</th>
+					<th>{{settings.columns.clics.title}}</th>
+					<th>{{settings.columns.precision.title}}</th>
+					<th>{{settings.columns.telephone.title}}</th>
+					<th>{{settings.columns.rubrique.title}}</th>
+					<th>{{settings.columns.email.title}}</th>
+					<th>{{settings.columns.photo.title}}</th>
+					<th>{{settings.columns.cri.title}}</th>
+					<th>{{settings.columns.geocode.title}}</th>
+					<th>{{settings.columns.site.title}}</th>
+					<th>{{settings.columns.paiement.title}}</th>
+					<th>{{settings.columns.menu.title}}</th>
+					<th>{{settings.columns.logo.title}}</th>
+					<th>{{settings.columns.donneesEnrichies.title}}</th>
+					<th>{{settings.columns.voie.title}}</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let item of source">
+					<td>{{item.id}}</td>
+					<td>{{item.nom}}</td>
+					<td>{{item.score}}</td>
+					<td>{{item.clics}}</td>
+					<td>{{item.precision}}</td>
+					<td>{{item.telephone}}</td>
+					<td>{{item.rubrique}}</td>
+					<td>{{item.email}}</td>
+					<td>{{item.photo}}</td>
+					<td>{{item.cri}}</td>
+					<td>{{item.geocode}}</td>
+					<td>{{item.site}}</td>
+					<td>{{item.paiement}}</td>
+					<td>{{item.menu}}</td>
+					<td>{{item.logo}}</td>
+					<td>{{item.donneesEnrichies}}</td>
+					<td>{{item.voie}}</td>
+				</tr>
+			</tbody>
+		</table>
+		<div class="row">
+			<h5 class="col-md-3">Page {{indexRequete / 10}}</h5>
+			<ul class="pager col-md-6">
+				<li class="mouse" (click)="previousInRequete()"><a>Précédent</a></li>
+				<li class="mouse" (click)="nextInRequete()"><a>Suivant</a></li>
+			</ul>
+		</div>
+    </div>
+  </div>
+</div>
+<div class="row">
+	<div class="col-md-12">
+	</div>
+	<div style="margin-top: 100px;" *ngIf="!done && wait">
+		<img src="{{loaderGif}}" alt="loader"/>
+	</div>
+</div>

@@ -1,0 +1,18 @@
+<table class="table table-striped" style="margin-top: 50px;">
+	<thead>
+		<tr>
+			<th>Libellé</th>
+			<th>Type de CRI</th>
+			<th>Code an8</th>
+			<th>Monétisé</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr *ngFor="let item of varRequeteOnInput.hits.hits">
+			<td class="mouse" >{{item._source.libelle}}</td>
+			<td class="mouse" >{{item._source.type_cri}}</td>
+			<td class="mouse" >{{item._source.code_an8}}</td>
+			<td class="mouse" >{{item._source.monetise}}</td>
+		</tr>
+	</tbody>
+</table>

@@ -1,0 +1,27 @@
+.logoEtab1{
+	margin-top: 50px;
+	width: 200px;
+	height: 150px;
+}
+
+.imgNothing{
+	margin-top: 50px;
+	width: 130px;
+	height: 120px;
+}
+
+.borderGreen{
+	border: 3px green solid;
+}
+
+.borderRed{
+	border: 3px red solid;
+}
+
+.conteneurImg{
+  width: 800px;;
+  height: 200px;
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
+}

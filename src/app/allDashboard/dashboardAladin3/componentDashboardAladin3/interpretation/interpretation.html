@@ -1,0 +1,37 @@
+<div class="row" *ngIf="done == true">
+	<div class="col-md-12">
+		<div class="enTete">
+			<p>
+				<span class="glyphicon glyphicon-comment" style="vertical-align:sub"></span> Interprétation
+				<span (click)="goToAtelier()" style="float: right; padding-top: 10px; padding-right: 10px;" class="glyphicon glyphicon-fullscreen mouse"></span>
+			</p>
+		</div>
+		<div style="padding:7px" *ngIf="apiInterpretation">
+			<div *ngFor="let item of apiInterpretation.blocs_reponses" style="">
+				Reponse 1 : <span style="color: red;">{{item.type_interpretation}}</span>
+				<div class="borderInterpretaion" *ngFor="let item2 of item.activites_affichage_immediat">
+					<span style="font-size: 115%;"><b>Activités principales :</b></span>
+					<span style="font-size: 115%;"><a style="text-decoration: none;">{{item2.libelle}}</a> ({{item2.scoring_qui_quoi}})</span><br/>
+					<div style="max-height: 100px; overflow-y: auto;">
+						<span *ngFor="let rubrique of item2.rubriques">
+							<span style="color: green;">{{rubrique.libelle_rubrique}} (</span>
+							<a (click)="goToRubrique(rubrique.code_an8, rubrique.libelle_rubrique)" class="mouse">{{rubrique.code_an8}}</a>
+							<span style="color: green;"> / {{rubrique.code_an9}})</span><br/>
+						</span>
+					</div>
+					<div *ngFor="let libelle of item2.expressions">
+						<span class="left25">Contenant : </span><a style="text-decoration:none;">{{libelle.libelle}}</a>
+					</div>
+					<div *ngFor="let synonyme of item2.expressions">
+						<span class="left40" *ngFor="let synonyme2 of synonyme.synonymes">Ou <a style="text-decoration: none;"> {{synonyme2}}</a><br/></span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-8" *ngIf="done == false && wait == true">
+		<img class="centerLoader" src="{{loaderGif}}" alt="loader"/>
+	</div>
+</div>

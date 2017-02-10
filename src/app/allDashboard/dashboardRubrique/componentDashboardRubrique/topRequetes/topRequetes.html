@@ -1,0 +1,17 @@
+<div class="row">
+	<div class="col-md-12">
+		<div class="enTete">
+			<p><span class="glyphicon glyphicon-star-empty"></span> Top Requêtes</p>
+		</div>
+		<div>
+			<div *ngIf="done == true">
+				<ul class="list-group">
+				<li class="list-group-item" *ngFor="let item of varRequeteOnInput.hits.hits; let i = 'index'">
+					<span class="badge">{{i + 1}}</span>
+					<a style="color: black; text-decoration : none;" class="mouse" (click)="goToRequetes(item._source.quiQuoi_normalized, item._id)">{{item._source.quiquoi_plus_frequent}}</a>
+				</li>
+			</ul>
+			</div>
+		</div>
+	</div>
+</div>

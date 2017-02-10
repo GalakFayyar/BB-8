@@ -1,0 +1,16 @@
+<div *ngFor="let item of responseRequeteEtabRanker.hits.hits" class="col-md-3">
+	<div *ngIf="item._source.presence_photo == 1" class="borderGreen">
+		<div class="conteneurImg" style="padding-bottom: 20px;">
+	      	<img style="margin-bottom: 30px;" class="logoEtab1" src="{{currentImg}}" alt="commerce" title="bu : commerce" /><br>
+	      	<h4 style="margin-bottom: 10px;">{{index}} / {{nbPhoto}}</h4>
+	      	<button type="button" class="btn btn-info" (click)="previous()">Previous</button>
+	      	<button type="button" class="btn btn-info" (click)="next()">Next</button>
+      	</div>
+	</div>
+	<div *ngIf="item._source.presence_photo == 0" class="borderRed">
+      <div class="conteneurImg" style="padding-bottom: 20px;">
+      	<img style="margin-bottom: 50px; margin-top: 70px;" class="imgNothing" src="{{imgNothing}}" alt="nothing" title="Pas images" /><br>
+      	<h4 style="margin-bottom: 30px;">Pas de Photos</h4>
+      </div>
+	</div>
+</div>

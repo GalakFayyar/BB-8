@@ -1,0 +1,44 @@
+<div class="col-md-4">
+  <table class="table table-stripped tableInfosEtab" style="margin-top: 10px;" *ngFor="let item of responseRequeteEtabRanker.hits.hits">
+    <tr>
+      <td>Nombre de Clics</td>
+      <td [class.cellRed]="item._source.nb_clics < 50" [class.cellGreen]="item._source.nb_clics > 50" ><span class="glyphicon glyphicon-hand-up"></span> {{item._source.nb_clics}}</td>
+    </tr>
+    <tr *ngIf="item._source.presence_site == 1">
+      <td>Site(s)</td>
+      <td class="cellGreen">
+        <div *ngFor="let site of item._source.site"><span class="glyphicon glyphicon-globe"></span> {{site}}</div>
+      </td>
+    </tr>
+    <tr *ngIf="item._source.presence_site == 0">
+      <td class="cellRed" colspan="2"><i>Site internet absent</i></td>
+    </tr>
+    <tr *ngIf="item._source.presence_email == 1">
+      <td>Email(s)</td>
+      <td class="cellGreen">
+        <div *ngFor="let email of item._source.emails"><span class="glyphicon glyphicon-envelope"></span> {{email}}</div>
+      </td>
+    </tr>
+    <tr *ngIf="item._source.presence_email == 0">
+      <td class="cellRed" colspan="2"><i>Adresse e-mail absente</i></td>
+    </tr>
+  </table>
+</div>
+<div class="col-md-2">
+  <div *ngFor="let item of responseRequeteEtabRanker.hits.hits">
+    <div *ngIf="item._source.presence_cri == 1">
+      <div class="vertical-scroll">
+
+        <table class="table table-striped">
+          <tr *ngFor="let cri of item._source.cri">
+            <td>{{cri}}</td>
+          </tr>
+        </table>
+
+      </div>
+    </div>
+    <div *ngIf="item._source.presence_cri == 0" style="color:#ACB5C3;text-transform:uppercase;text-align:center;font-weight:bold;margin-top:50px;">
+      Pas d'informations sur les prestations de cet établissement.
+    </div>
+  </div>
+</div>

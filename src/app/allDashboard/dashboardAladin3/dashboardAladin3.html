@@ -1,0 +1,74 @@
+<div class="grid" [ngGrid]="{'max_cols': 4, 'auto_resize': true, 'draggable': lock, 'cascade': 'left', 'row_height': 215}">
+	<div *ngFor="let tabDisplayComp of tabDisplayComposants">
+		<div *ngIf="tabDisplayComp.state == true && tabDisplayComp.name == 'Interpretation'">
+			<div style="border:solid 1px #CCC;background:#efefef;overflow-y:auto !important;overflow-x:hidden !important" class="grid-item" [ngGridItem]="{'sizex': 1, 'sizey': 2, 'minRows': 1}">
+				<interpretation></interpretation>
+			</div>
+		</div>
+
+		<div *ngIf="tabDisplayComp.state == true && tabDisplayComp.name == 'Stats recherches utilisateurs'">
+			<div style="background: #efefef;" class="grid-item" [ngGridItem]="{'sizex': 1, 'sizey': 2}">
+				<evts></evts>
+			</div>
+		</div>
+
+		<div *ngIf="tabDisplayComp.state == true && tabDisplayComp.name == 'GeoRequetes'">
+			<div style="background: #efefef;" class="grid-item" [ngGridItem]="{'sizex': 2, 'sizey': 2}">
+				<geoRequetes></geoRequetes>
+			</div>
+		</div>
+
+		<div *ngIf="tabDisplayComp.state == true && tabDisplayComp.name == 'Stats'">
+			<div style="background: #efefef;" class="grid-item" [ngGridItem]="{'sizex': 4, 'sizey': 2}">
+				<informationsComplementaire></informationsComplementaire>
+			</div>
+		</div>
+		
+		<!-- <div *ngIf="tabDisplayComp.state == true && tabDisplayComp.name == 'Actions'">
+			<div *ngIf="connect == true" style="background: #efefef;" class="grid-item" [ngGridItem]="{'sizex': 1, 'sizey': 2}">
+				<actions></actions>
+			</div>
+		</div> -->
+	</div>
+</div>
+
+<div id="modalComposants" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">Composants</h4>
+			</div>
+			<div class="modal-body">
+				<div style="max-height: 280px; overflow-y: auto;">
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th><p style="text-align: center; font-size: 15px;">Composants</p></th>
+								<th><p style="text-align: center; font-size: 15px;">Activée ?</p></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr *ngFor="let item of tabDisplayComposants">
+								<td style="text-align:center;">{{item.name}}</td>
+								<td style="text-align:center;" *ngIf="item.state == true">
+									<button type="button" class="btn btn-success btn-sm" (click)="modifStateComposants(item.name)"></button>
+								</td>
+								<td style="text-align:center;" *ngIf="item.state == false">
+									<button type="button" class="btn btn-warning btn-sm" (click)="modifStateComposants(item.name)"></button>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<h4 style="float: left;">Tout: 
+					<button type="button" class="btn btn-success btn-sm" (click)="modifStateAllComposantsActiv()"></button>
+					<button type="button" class="btn btn-warning btn-sm" (click)="modifStateAllComposantsNone()"></button>
+				</h4>
+				<button type="button" class="btn btn-success" data-dismiss="modal">OK</button>
+			</div>
+		</div>
+	</div>
+</div>

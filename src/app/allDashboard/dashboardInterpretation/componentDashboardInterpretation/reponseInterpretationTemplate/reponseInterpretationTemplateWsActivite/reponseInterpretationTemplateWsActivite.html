@@ -1,0 +1,28 @@
+<div *ngIf="responseInterpretation != undefined">
+	<div *ngFor="let item of responseInterpretation.Envelope.Body.interpreterResponse.return.resultatInterpretation.blocReponses">
+		<div class="borderTitleSecond" *ngFor="let item2 of item.lstActivitesAffichageImmediat">
+			<span>
+				{{item2.libelle}} ({{item2.score}})<br/>
+				<span>
+					Etat : {{item2.mlEtat}} / Source: mlSource / BR : {{item2.identificationBr.identifiant}}
+				</span>
+			</span>
+		</div>
+		<div style="margin-left: 20px; margin-top: 20px;" *ngFor="let item2 of item.lstActivitesAffichageImmediat">
+			<span>
+				<span style="font-size: 14px; font-weight: bold;">Type d'usage<br/></span>
+				<span style="margin-left: 10px;">{{item2.type}}</span><br/>
+			</span>
+			<span>
+				<span style="font-size: 14px; font-weight: bold;">Quoi<br/></span>
+				<span style="margin-left: 10px;" *ngFor="let item3 of item2.rubriques"> > {{item3.libelleRubrique}} ({{item3.codeRubrique}})</span><br/>
+			</span>
+			<span>
+				<span style="font-size: 14px; font-weight: bold;">CRI<br/></span>
+			</span>
+			<span>
+				<span style="font-size: 14px; font-weight: bold;">Qui<br/></span>
+			</span>
+		</div>
+	</div>
+</div>

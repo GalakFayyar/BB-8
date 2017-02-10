@@ -1,0 +1,37 @@
+<div class="row" *ngIf="done == true">
+    <div class="col-md-12">
+        <div class="enTete">
+            <ol class="breadcrumb" >
+                <li *ngFor="let item of filDariane">{{item}}</li>
+            </ol>
+            <h3 class="titleVisualisation">Rubriques ({{nbRubriques}})<span data-toggle="modal" data-target="#createRubrique" class="glyphicon glyphicon-plus mouse pull-right addVertexButton"></span><span *ngIf="activeItem === 'regle' || activeItem == 'etab' || activeItem == 'cri'" data-toggle="modal" data-target="#createLinkRubrique" class="glyphicon glyphicon-link mouse pull-right addVertexButton"></span></h3>
+
+        </div>
+        <div class="bodyVisualisation">
+            <table class="table table-striped">
+                <thead>
+                    <tr *ngIf="rubriques">
+                        <th class="thVisualisation">id</th>
+                        <th class="thVisualisation">Libellé</th>
+                        <th class="thVisualisation">Libellé Métier</th>
+                        <th *ngIf="activeItem === 'regle' || activeItem == 'rubrique' || activeItem == 'cri'" class="thVisualisation"></th>
+                    </tr>
+                </thead>
+                <tbody >
+                    <tr *ngFor="let item of rubriques">
+                        <td  [class.activeItemVisualisation]="activeItem == 'rubrique'" class="itemVisualisation"><span (click)="search(item['@rid'])">{{item.id}}</span></td>
+                        <td  [class.activeItemVisualisation]="activeItem == 'rubrique'" class="itemVisualisation"><span (click)="search(item['@rid'])">{{item.libelle}}</span></td>
+                        <td  [class.activeItemVisualisation]="activeItem == 'rubrique'" class="itemVisualisation"><span (click)="search(item['@rid'])">{{item.metierLibelle}}</span></td>
+                        <td  *ngIf="activeItem === 'regle' || activeItem == 'rubrique' || activeItem == 'cri' || activeItem == 'etab'" [class.activeItemVisualisation]="activeItem == 'rubrique'" class="itemVisualisation"><span (click)="deleteLink(item['@rid'])"><span class="glyphicon glyphicon-remove mouse" style="color:red;vertical-align: sub;"></span></span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="row" *ngIf="done == false">
+    <div class="col-md-8" >
+        <img class="centerLoader" src="{{loaderGif}}" alt="loader"/>
+    </div>
+</div>

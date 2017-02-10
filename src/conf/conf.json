@@ -1,0 +1,33 @@
+{
+    "api": {
+        "adresse.help": "l'URL du cluster ElasticSearch intégration utilisé pour les index aladin1-2-3-4 insee",
+        "adresse": "http://exalead1t.bbo1t.local:10200",
+        "adresse_port_10400.help": "l'URL du cluster ElasticSearch intégration utilisé pour les indexs /critere_source et /ref_mc",
+        "adresse_port_10400": "http://exalead1t.bbo1t.local:10400",
+        "r2d2Config.help": "l'URL pour la config R2D2",
+        "r2d2Config": "http://exalead1t.bbo1t.local:10200/r2d2_config/config/_search",
+        "adresseIntForInterpretation.help": "l'URL pour faire les requêtes pour l'interpretation (delphes, ...)",
+        "adresseIntForInterpretation": "http://ioda01t.bbo1t.local:8090",
+        "getAuthentification.help": "l'URL pour se connecter",
+        "getAuthentification": "http://ioda01t.bbo1t.local:8073/api-authentification-1/token/",
+        "getDroitAuthentification.help": "l'URL pour avoir les droits utilisateur",
+        "getDroitAuthentification": "http://ioda01t.bbo1t.local:8073/api-authentification-1/users/",
+        "prosPopulaire.help": "l'URL pour avoir la base csp_csv et pouvoir grâce au champs score contenu à l'intérieur pouvoir donné les pros les plus populaires",
+        "prosPopulaire": "http://exalead1t.bbo1t.local:10200/csp_csv_last/_search",
+        "geoRequetes.help": "l'URL pour pouvoir accéder à geoRequêtes",
+        "geoRequetes": "http://ioda.services.local/integration/georequetes-ui/#/?q=",
+        "dataVisualisationQuery": "http://orientdb.ioda.services.local/query/Base de Connaissance/sql/",
+        "dataVisualisationDocument": "http://orientdb.ioda.services.local/document/Base de Connaissance/",
+        "dataVisualisationCommand": "http://orientdb.ioda.services.local/command/Base de Connaissance/sql",
+
+        "adressePagesJaunes.help": "l'URL pour accéder au site pagesjaunes.fr",
+        "adressePagesJaunes": "http://www.pagesjaunes.fr",
+        
+        "urlElasticSearch_seachEtab": "http://exalead1t.bbo1t.local:10200/csp_csv_last/_search",
+        "urlElasticSearch_searchPhotos": "http://bigdatasearchvg.pi1g.local:10400/etab_cache/_search",
+
+        "urlApiContexte": "http://api-contexte.integration.ioda.services.local/similaires?mots=REQUETEAREMPLACER&size=5&type=json",
+
+        "creationEvt": "http://integration.ioda.services.local/home/r2d2/php/post_ws.php"
+    }
+}

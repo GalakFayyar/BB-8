@@ -1,0 +1,67 @@
+<div class="row">
+	<div class="col-md-6">
+		<div class="note note-info">
+			<h4 class="block">Numériques :</h4>
+			<div class="form-group" *ngFor="let filtre of newFilter">
+				<div class="dropdown" style="display:inline-block;">
+					<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="border-radius:0;background:#4B77BE">
+						{{filtre.currentFilter}} <span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu">
+						<li *ngFor="let item of confFiltres.filtresAvanceAvecInput">
+							<a (click)="chooseFilter(item.name, filtre.name)" class="mouse">{{item.name}}</a>
+						</li>
+					</ul>
+				</div>
+
+				<input *ngIf="filtre.min != 'undefined'" value="{{filtre.min}}" style="width:70px;display:inline-block;" type="number" class="form-control" id="filtre_numerique_min{{filtre.currentFilter}}" placeholder="min">
+
+				<input *ngIf="filtre.min == 'undefined'" style="width:70px;border-radius:0;display:inline-block;" type="number" class="form-control"
+				id="filtre_numerique_min{{filtre.currentFilter}}" placeholder="min">
+
+				<input *ngIf="filtre.max != 'undefined'" value="{{filtre.max}}" style="width:70px;border-radius:0;display:inline-block;" type="number" class="form-control" id="filtre_numerique_max{{filtre.currentFilter}}" placeholder="max">
+
+				<input *ngIf="filtre.max == 'undefined'" style="width:70px;border-radius:0;display:inline-block;" type="number" class="form-control" id="filtre_numerique_max{{filtre.currentFilter}}" placeholder="max">
+
+				<button (click)="desaffecterFilter(filtre.currentFilter)" type="button" style="font-weight:bold;border-radius:0;display:inline-block;" class="btn btn-danger">
+					<span style="vertical-align:sub;" class="glyphicon glyphicon-trash"></span>
+				</button>
+			</div>
+
+			<div class="form-group">
+				<button (click)="addFilter()" type="button" style="text-transform:uppercase;font-weight:bold;border-radius:0;" class="btn btn-success">
+					<span class="glyphicon glyphicon-plus"></span> ajouter filtre
+				</button>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-6">
+		<div class="note note-info">
+			<h4 class="block">Listes :</h4>
+			<!-- <h5>Catégorie de Rubriquage :</h5> -->
+			<div class="form-group">
+				<label>Catégorie de Rubriquage</label>
+				<ng-select
+					[options]="tabFiltresBasicListeCategorieDeRubriquage"
+					multiple="true"
+				    placeholder="Séléctionner un événement"
+				    (selected)="onSelectedUtiliteur($event, 'filtresBasicListeCategorieDeRubriquage')"
+					(deselected)="onDeselectedUtilisateur($event, 'filtresBasicListeCategorieDeRubriquage')"
+					[(ngModel)]="ngModelTabFiltresBasicListeCategorieDeRubriquage">
+				</ng-select>
+			</div>
+			<!-- <h5>Nature :</h5> -->
+			<div class="form-group">
+				<label>Nature</label>
+				<ng-select
+					[options]="tabFiltresBasicListeNature"
+					multiple="true"
+				    placeholder="Séléctionner un événement"
+				    (selected)="onSelectedUtiliteur($event, 'filtresBasicListeNature')"
+					(deselected)="onDeselectedUtilisateur($event, 'filtresBasicListeNature')"
+					[(ngModel)]="ngModelTabFiltresBasicListeNature">
+				</ng-select>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,54 @@
+<div class="row">
+	<div class="col-md-12">
+		<div class="enTete">
+			<p><span class="glyphicon glyphicon-copyright-mark"></span> CRI et Marques</p>
+		</div>
+
+		<div class="col-md-6" style="overflow-y: auto;">
+			<table class="table table-striped" *ngIf="done == true">
+				<thead>
+					<tr>
+						<th>
+							<span style="font-size:1.2em">CRI</span>
+							<span class="badge">{{responseCriEtMarques_Cri.hits.hits.length}}</span>
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<input type="text" id="searchCri" [(ngModel)]="cri" (ngModelChange)="filtreCRI($event)" placeholder="Search Cri">
+					</tr>
+					<tr *ngFor="let cri of tabCri">
+						<td *ngIf="cri.state == true">{{cri.libelle}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="col-md-6" style="overflow-y: auto;">
+			<table class="table table-striped" *ngIf="done == true">
+				<thead>
+					<tr>
+						<th>
+							<span style="font-size:1.2em">Marques</span>
+							<span class="badge">{{responseCriEtMarques_Marques.hits.hits.length}}</span>
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<input type="text" id="searchMarques" [(ngModel)]="marques" (ngModelChange)="filtreMarques($event)" placeholder="Search Marques">
+					</tr>
+					<tr *ngFor="let marques of tabMarques">
+						<td *ngIf="marques.state == true">{{marques.libelle}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-8" *ngIf="done == false && wait == true">
+		<img class="centerLoader" src="{{loaderGif}}" alt="loader"/>
+	</div>
+</div>

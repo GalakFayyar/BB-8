@@ -1,0 +1,38 @@
+<div class="row" *ngIf="done == true">
+    <div class="col-md-12" >
+        <div class="enTete">
+            <ol class="breadcrumb" >
+                <li *ngFor="let item of filDariane">{{item}}</li>
+            </ol>
+        <h3 class="titleVisualisation">Expressions ({{nbExpressions}})<span data-toggle="modal" data-target="#createExpression" class="glyphicon glyphicon-plus mouse pull-right addVertexButton"></span><span *ngIf="activeItem === 'ontologie' || activeItem == 'cri' || activeItem == 'concept' || activeItem == 'etab'" data-toggle="modal" data-target="#createLinkExpression" class="glyphicon glyphicon-link mouse pull-right addVertexButton"></span></h3>
+        </div>
+        <div class="bodyVisualisation">
+            <table class="table table-striped">
+                <thead>
+                    <tr *ngIf="expressions">
+                        <th class="thVisualisation">Libellé</th>
+                        <th class="thVisualisation">Fréquence Mensuelle</th>
+                        <th class="thVisualisation">
+                        </th>
+                        <th *ngIf="activeItem === 'ontologie' || activeItem == 'cri' || activeItem == 'expression' || activeItem == 'concept' || activeItem == 'etab'" class="thVisualisation"></th>
+
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of expressions">
+                        <td  [class.activeItemVisualisation]="activeItem == 'expression'" class="itemVisualisation"><span (click)="search(item['@rid'])">{{item.libelle}}</span></td>
+                        <td  [class.activeItemVisualisation]="activeItem == 'expression'" class="itemVisualisation"><span (click)="search(item['@rid'])">{{item.frequence_mensuelle}}</span></td>
+                        <td  [class.activeItemVisualisation]="activeItem == 'expression'" class="itemVisualisation"><span (click)="goToCompareRubrique(item['@rid'])">Analyse</span></td>
+                        <td  *ngIf="activeItem === 'ontologie' || activeItem == 'cri' || activeItem == 'expression' || activeItem == 'concept' || activeItem == 'etab'" [class.activeItemVisualisation]="activeItem == 'expression'" class="itemVisualisation"><span (click)="deleteLink(item['@rid'])"><span class="glyphicon glyphicon-remove mouse" style="color:red;vertical-align: sub;"></span></span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="divLoader" *ngIf="done == false">
+    <div class="Loader">
+        <img class="" src="{{loaderGif}}" alt="loader"/>
+    </div>
+</div>

@@ -1,0 +1,1 @@
+Le CHANGELOG est maintenue dans le fichier [src/conf/versions.json](src/conf/versions.json)
